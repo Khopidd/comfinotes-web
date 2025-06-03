@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.container-reset{
+    width: 100%;
+    max-height: 100%;
+    background-color: var(--color-white-blue);
+
+}
+
+.head-logo-reset{
+    padding: 25px;
+}
+
+.head-logo-reset img{
+    width: 180px;
+}
+
+.form-section-reset{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 600px;
+
+}
+
+.form-manage-reset{
+    width: 430px;
+    height: fit-content;
+    padding: 15px;
+    background-color: var(--color-light);
+}
+
+.form-manage-reset .form-title-reset{
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-manage-reset .form-title-reset h1{
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.form-manage-reset .form-title-reset p{
+    font-size: 0.8em;
+    text-align: center;
+    color: var(--text-color)
+}
+
+
+.label-form-reset {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.input-container-reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    height: 45px;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-dark-grey);
+    border-radius: 12px;
+    padding: 10px 15px;
+}
+
+.input-container-reset iconify-icon {
+    color: var(--color-dark-grey);
+    font-size: 1.5em;
+    margin-right: 12px;
+}
+
+.input-container-reset .toggle-password {
+    cursor: pointer;
+    position: relative;
+    right: -15px;
+    font-size: 1.6em;
+    color: var(--color-dark-grey);
+}
+
+.input-container-reset input {
+    border: none;
+    background: none;
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+
+.label-button-reset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-button-reset .btn-continue{
+    border: none;
+    background-color: var(--hover-blue-light);
+    border-radius: 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-light);
+    width: 330px;
+    padding: 15px 10px;
+    transition: 0.5s ease;
+}
+
+.label-button-reset .btn-continue:hover{
+    background-color: var(--color-blue-light);
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 480px) {
+    .container-reset{
+        width: 100%;
+
+    }
+
+    .head-logo-reset{
+        padding: 15px;
+    }
+
+    .head-logo-reset img{
+        width: 140px;
+    }
+
+    .form-section-reset{
+        width: 100%;
+
+    }
+
+    .form-manage-reset{
+        width: 325px;
+        padding: 15px;
+    }
+
+    .form-manage-reset .form-title-reset{
+        margin: 10px;
+    }
+
+    .form-manage-reset .form-title-reset h1{
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .form-manage-reset .form-title-reset p{
+        font-size: 0.7em;
+    }
+
+    .input-container-reset {
+        width: 360px;
+        padding: 10px 15px;
+    }
+
+    .input-container-reset iconify-icon {
+        font-size: 1.5em;
+        margin-right: 12px;
+    }
+
+    .input-container-reset input {
+        font-size: 14px;
+    }
+
+    .label-button-reset .btn-continue{
+        font-size: 0.9em;
+        width: 300px;
+        padding: 15px 10px;
+        margin: 0 0 5px;
+    }
+
+    .label-button-reset .verifikasi{
+        font-size: 0.8em;
+        margin: 15px 0;
+    }
+
+}
