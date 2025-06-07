@@ -11,7 +11,7 @@
     <title>{{ $title }}</title>
 </head>
 <body>
-<x-sidebar-admin></x-sidebar-admin>
+<x-sidebar-admin :PageTitle="$PageTitle" :PageSubtitle="$PageSubtitle" />
 
     {{ $slot }}
 

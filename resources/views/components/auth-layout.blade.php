@@ -16,5 +16,8 @@
     {{ $slot }}
 
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<script src="{{ asset('asset/js/action.js') }}"></script>
+<script src="{{ asset('asset/js/button.js') }}"></script>
+<script src="{{ asset('asset/js/popup.js') }}"></script>
 </body>
 </html>

@@ -11,9 +11,12 @@ class AdminLayout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public string $PageTitle;
+    public string $PageSubtitle;
+    public function __construct(string $PageTitle = "Default Title", string $PageSubtitle = "Default Subtitle")
     {
-        //
+        $this->PageTitle = $PageTitle;
+        $this->PageSubtitle = $PageSubtitle;
     }
 
     /**
@@ -21,6 +24,9 @@ class AdminLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin-layout');
+        return view('components.admin-layout', [
+            'PageTitle' => $this->PageTitle,
+            'PageSubtitle' => $this->PageSubtitle
+        ]);
     }
 }

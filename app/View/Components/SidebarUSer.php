@@ -21,6 +21,6 @@ class SidebarUSer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidebar-u-ser');
+        return view('components.sidebar-user');
     }
 }
