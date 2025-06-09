@@ -1,6 +1,14 @@
 <x-user-layout>
 <x-slot:title>Dashboard User</x-slot:title>
 
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            showAlert("{{ session('success') }}", "success", 4000);
+            });
+        </script>
+    @endif
+
     <div class="main-content">
         <div class="main-menu">
             <div class="card-wallet">

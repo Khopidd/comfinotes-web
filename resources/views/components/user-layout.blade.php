@@ -11,7 +11,8 @@
     <title>{{ $title }}</title>
 </head>
 <body>
-<x-sidebar-user></x-sidebar-user>
+<x-sidebar-user />
+<x-alert />
 
     {{ $slot }}
 

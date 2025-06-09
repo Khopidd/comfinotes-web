@@ -3,6 +3,14 @@
 <x-slot:PageTitle>Dashboard</x-slot:PageTitle>
 <x-slot:PageSubtitle>Informasi terperinci tentang keuangan komunitas Anda</x-slot:PageSubtitle>
 
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            showAlert("{{ session('success') }}", "success", 4000);
+            });
+        </script>
+    @endif
+
     <div class="main-content">
         <div class="card-content">
             <div class="card-box">

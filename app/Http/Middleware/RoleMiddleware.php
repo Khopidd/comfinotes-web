@@ -14,7 +14,7 @@ class RoleMiddleware
         }
 
         if(Auth::user()->role !== $role){
-            abort(403, "Anda Anda di tolak");
+            abort(403, "Anda di tolak");
         }
 
         return $next($request);
