@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class ResetController extends Controller
 {
-    //
+    public function reset(){
+        return view('auth.reset-password');
+    }
 }

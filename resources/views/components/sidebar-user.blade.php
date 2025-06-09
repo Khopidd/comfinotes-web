@@ -73,7 +73,7 @@
         <p>Do you want to exit the app now?</p>
         <div class="logout-actions">
             <button class="btn-cancel" data-action="cancel-logout">Cancel</button>
-            <form id="logout-form" action="#" method="POST" style="display: inline;">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                 @csrf
                 <button type="submit" class="btn-confirm">Sign Out</button>
             </form>

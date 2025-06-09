@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/color-pallete.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/aset/alert.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/user/style-sidebar-user.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/user/style-user.css') }}">
     <link rel="icon" href="{{ asset('asset/image/logo-1.png') }}">
@@ -18,5 +19,6 @@
 <script src="{{ asset('asset/js/action.js') }}"></script>
 <script src="{{ asset('asset/js/button.js') }}"></script>
 <script src="{{ asset('asset/js/popup.js') }}"></script>
+<script src="{{ asset('asset/js/alert.js') }}"></script>
 </body>
 </html>

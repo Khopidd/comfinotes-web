@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class VerifController extends Controller
 {
-    //
+    public function verif(){
+        return view('auth.verif-email');
+    }
 }

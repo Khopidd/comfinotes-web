@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="{{ asset('asset/css/auth/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/auth/verif.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/color-pallete.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/aset/alert.css') }}">
     <link rel="icon" href="{{ asset('asset/image/logo-1.png') }}">
     <title>{{ $title }}</title>
 </head>
 <body>
+<x-alert />
 
     {{ $slot }}
 
@@ -19,5 +21,6 @@
 <script src="{{ asset('asset/js/action.js') }}"></script>
 <script src="{{ asset('asset/js/button.js') }}"></script>
 <script src="{{ asset('asset/js/popup.js') }}"></script>
+<script src="{{ asset('asset/js/alert.js') }}"></script>
 </body>
 </html>

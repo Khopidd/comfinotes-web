@@ -38,7 +38,7 @@
                     <h1>Masuk ke Akun Anda</h1>
                     <p>Selamat datang kembali! silakan masukkan detail Anda</p>
                 </div>
-                <form action="#" method="POST" class="form-content">
+                <form id="login-form" action="{{ route('login') }}" method="POST" class="form-content">
                     @csrf
                     <div class="label-form">
                         <div class="input-container-login">
@@ -56,7 +56,7 @@
 
                     <div class="form-link">
                         <label class="label">Remember Me
-                            <input type="checkbox">
+                            <input type="checkbox" name="remember" {{ old('remember' ? 'checked' : '') }}>
                             <span class="checkmark"></span>
                         </label>
                         <a href="{{ route('forgot') }}" class="forgot">Forgot Password</a>
