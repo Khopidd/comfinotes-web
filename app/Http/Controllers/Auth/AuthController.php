@@ -40,13 +40,14 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $role = Auth::user()->role;
 
-            session()->flash('success', 'Halo ' . Auth::user()->name . ', selamat datang kembali!');
+            session()->flash('success', 'Halo ' . Auth::user()->username . ', selamat datang kembali!');
 
             return match ($role) {
                 'admin' => redirect()->route('dashboard-admin'),
                 'user' => redirect()->route('dashboard-user'),
                 default => back()->withErrors(['email' => 'Role tidak dikenali.']),
             };
+
         } else {
 
         return back()->withErrors([
