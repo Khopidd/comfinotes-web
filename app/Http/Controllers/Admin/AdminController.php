@@ -10,8 +10,4 @@ class AdminController extends Controller
     public function admin(){
         return view('admin.dashboard-admin');
     }
-
-    public function comunity(){
-        return view('admin.community-admin');
-    }
 }
