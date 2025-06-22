@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->enum('role', ['admin', 'user'])->default('user');
+            $table->foreignId('divisi_id')->nullable()->constrained('divisi')->nullOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

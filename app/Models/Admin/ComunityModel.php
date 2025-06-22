@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models\Admin;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ComunityModel extends Model{
+
+    protected $table = 'divisi';
+    protected $primaryKey = 'divisi_id' ;
+    public $timestamps = true;
+    protected $fillable = [
+        'name_divisi',
+        'image_divisi',
+        'created_at',
+        'updated_at'
+    ];
+}

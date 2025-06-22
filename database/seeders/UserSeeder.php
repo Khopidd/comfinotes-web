@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin\AdminModel;
+use App\Models\Admin\ComunityModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,35 +14,42 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        $divisi1 = ComunityModel::create(['name_divisi' => 'PDD']);
+        $divisi2 = ComunityModel::create(['name_divisi' => 'Internal']);
+
+        AdminModel::create([
             'image' => '',
             'username' => 'Khopid',
             'email' => 'admin01@gmail.com',
             'password' => Hash::make('password123'),
+            'divisi_id' => null,
             'role' => 'admin',
         ]);
 
-        User::create([
+        AdminModel::create([
             'image' => '',
             'username' => 'Egy',
             'email' => 'admin02@gmail.com',
             'password' => Hash::make('password'),
+            'divisi_id' => null,
             'role' => 'admin',
         ]);
 
-        User::create([
+        AdminModel::create([
             'image' => '',
             'username' => 'Azis',
             'email' => 'user01@gmail.com',
             'password' => Hash::make('password123'),
+            'divisi_id' => $divisi1->id,
             'role' => 'user',
         ]);
 
-        User::create([
+        AdminModel::create([
             'image' => '',
             'username' => 'Azka',
             'email' => 'user02@gmail.com',
             'password' => Hash::make('password'),
+            'divisi_id' => $divisi2->id,
             'role' => 'user',
         ]);
     }
