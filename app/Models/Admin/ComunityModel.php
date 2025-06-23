@@ -4,10 +4,11 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ComunityModel extends Model{
+class ComunityModel extends Model
+{
 
     protected $table = 'divisi';
-    protected $primaryKey = 'divisi_id' ;
+    protected $primaryKey = 'id' ;
     public $timestamps = true;
     protected $fillable = [
         'name_divisi',
@@ -15,4 +16,8 @@ class ComunityModel extends Model{
         'created_at',
         'updated_at'
     ];
+
+    public function comunite(){
+        return $this->hasMany(\App\Models\Auth\AuthModel::class, 'divisi_id');
+    }
 }

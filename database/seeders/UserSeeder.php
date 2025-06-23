@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\AdminModel;
 use App\Models\Admin\ComunityModel;
+use App\Models\Auth\AuthModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,10 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $divisi1 = ComunityModel::create(['name_divisi' => 'PDD']);
-        $divisi2 = ComunityModel::create(['name_divisi' => 'Internal']);
 
-        AdminModel::create([
+        AuthModel::create([
             'image' => '',
             'username' => 'Khopid',
             'email' => 'admin01@gmail.com',
@@ -26,7 +24,7 @@ class UserSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        AdminModel::create([
+        AuthModel::create([
             'image' => '',
             'username' => 'Egy',
             'email' => 'admin02@gmail.com',
@@ -35,21 +33,21 @@ class UserSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        AdminModel::create([
+        AuthModel::create([
             'image' => '',
-            'username' => 'Azis',
+            'username' => 'Divisi Eksternal',
             'email' => 'user01@gmail.com',
             'password' => Hash::make('password123'),
-            'divisi_id' => $divisi1->id,
+            'divisi_id' => 1,
             'role' => 'user',
         ]);
 
-        AdminModel::create([
+        AuthModel::create([
             'image' => '',
-            'username' => 'Azka',
+            'username' => 'Divisi Internal',
             'email' => 'user02@gmail.com',
             'password' => Hash::make('password'),
-            'divisi_id' => $divisi2->id,
+            'divisi_id' => 2,
             'role' => 'user',
         ]);
     }

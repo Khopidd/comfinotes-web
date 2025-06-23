@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models\User;
 
 use App\Models\Auth\AuthModel;
 use Illuminate\Database\Eloquent\Builder;
 
-class AdminModel extends AuthModel
+class UserModel extends AuthModel
 {
     protected $table = 'users';
 
     public static function booted(){
-        static::addGlobalScope('admin', function(Builder $query){
-            $query->where('role', 'admin');
+        static::addGlobalScope('user', function(Builder $query){
+            $query->where('role', 'user');
         });
     }
 }
