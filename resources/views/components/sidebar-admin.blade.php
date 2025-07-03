@@ -1,5 +1,19 @@
 @props(['PageTitle', 'PageSubtitle'])
 
+<div class="sidebar-admin">
+    <div class="title-side-admin">
+        <a href="{{ route('dashboard-admin') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo admin" class="logo-admin"></a>
+    </div>
+    <ul class="menu">
+        <li class="{{ request()->routeIs('dashboard-admin') ? 'active-btn' : '' }}">
+            <iconify-icon icon="mage:dashboard-fill"></iconify-icon><a href="{{ route('dashboard-admin') }}">Dashboard</a>
+        </li>
+        <li class="{{ request()->routeIs('comunity-admin') ? 'active-btn' : '' }}">
+            <iconify-icon icon="heroicons:user-group-solid"></iconify-icon><a href="{{ route('comunity-admin') }}">Community</a>
+        </li>
+    </ul>
+</div>
+
 <div class="main-header">
     <div class="header-menu">
         <div class="header-title">
@@ -56,37 +70,8 @@
             </div>
         </div>
     </div>
-
-    <div class="sidebar-admin">
-        <div class="title-side-admin">
-            <a href="{{ route('dashboard-admin') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo admin" class="logo-admin"></a>
-        </div>
-        <ul class="menu">
-            <li class="{{ request()->routeIs('dashboard-admin') ? 'active-btn' : '' }}">
-                <iconify-icon icon="mage:dashboard-fill"></iconify-icon><a href="{{ route('dashboard-admin') }}">Dashboard</a>
-            </li>
-            <li class="{{ request()->routeIs('comunity-admin') ? 'active-btn' : '' }}">
-                <iconify-icon icon="heroicons:user-group-solid"></iconify-icon><a href="{{ route('comunity-admin') }}">Community</a>
-            </li>
-        </ul>
-    </div>
 </div>
 
-<!-- Modal content -->
-
-<div class="logout-notification" id="logout-notification" style="display: none;">
-    <div class="logout-content">
-        <h2>Sign Out?</h2>
-        <p>Do you want to exit the app now?</p>
-        <div class="logout-actions">
-            <button class="btn-cancel" data-action="cancel-logout">Cancel</button>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="btn-confirm">Sign Out</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <div id="modal-notifications" class="modal">
     <div class="modal-content">

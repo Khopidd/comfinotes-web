@@ -22,7 +22,7 @@ class AuthModel extends Authenticatable
 
     public function divisi()
     {
-        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'divisi_id');
+        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'id');
     }
 
     public function scopeAdmin($query)

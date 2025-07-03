@@ -17,7 +17,7 @@ body{
 
 .main-content{
     width: 1265px;
-    height: 100%;
+    height: fit-content;
     position: relative;
     top: 90px;
     left: 250px;

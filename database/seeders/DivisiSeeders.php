@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Admin\ComunityModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DivisiSeeders extends Seeder
 {
@@ -15,12 +16,14 @@ class DivisiSeeders extends Seeder
     {
         ComunityModel::create([
             'image_divisi' => '',
-            'name_divisi' => 'Divisi Eksternal'
+            'name_divisi' => 'Divisi Eksternal',
+            'key_id' => Str::slug('Divisi Eksternal')
         ]);
 
         ComunityModel::create([
             'image_divisi' => '',
-            'name_divisi' => 'Divisi Internal'
+            'name_divisi' => 'Divisi Internal',
+            'key_id' => Str::slug('Divisi Internal')
         ]);
     }
 }

@@ -13,6 +13,7 @@ class ComunityModel extends Model
     protected $fillable = [
         'name_divisi',
         'image_divisi',
+        'key_id',
         'created_at',
         'updated_at'
     ];

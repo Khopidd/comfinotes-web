@@ -1,0 +1,379 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.modal-logout{
+    max-width: 100%;
+}
+
+.logout-notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    place-items: center;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+.logout-content {
+    display: flex;
+    background-color: var(--color-light);
+    width: 320px;
+    height: 190px;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logout-content h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.logout-content p {
+    font-size: 0.9em;
+    padding: 15px;
+    margin-bottom: 2em;
+    color: var(--color-dark-grey);
+}
+
+.logout-actions {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.btn-confirm {
+    background-color: var(--color-light-red);
+    color: var(--color-light);
+    border: none;
+    border-radius: 8px;
+    width: 140px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    background: var(--color-light);
+    border-radius: 8px;
+    width: 140px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+
+// Modal Delete
+
+.modal-delete{
+    max-width: 100%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    place-items: center;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+.modal-box {
+    display: flex;
+    background-color: var(--color-light);
+    width: 320px;
+    height: fit-content;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-icon{
+    display: flex;
+    width: 75px;
+    margin: 15px 0;
+    height: 75px;
+    background-color: var(--color-light-red);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.modal-icon .icon-delete{
+    font-size: 2em;
+    color: var(--color-light);
+}
+
+.modal-text h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.modal-text p {
+    font-size: 0.9em;
+    padding: 15px;
+    margin-bottom: 2em;
+    color: var(--color-dark-grey);
+}
+
+.delete-action {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+/* ----------------------| End Main Content |------------------------ */
+
+.modal-add {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-add.active {
+    display: flex;
+}
+
+
+.modal-content-add {
+    display: flex;
+    background-color: var(--color-light);
+    padding: 20px;
+    width: 430px;
+    border-radius: 8px;
+    position: relative;
+    flex-direction: column;
+}
+
+
+.modal-content-add .close-button {
+    position: absolute;
+    top: -2px;
+    right: 7px;
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-dark-grey);
+    transition: 0.5s ease;
+}
+
+.modal-content-add .close-button:hover {
+    color: #000;
+}
+
+.modal-content-add .title-modal{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.image-add-acount {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-preview,
+.custom-file-label {
+    width: 125px;
+    height: 125px;
+    display: flex;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    border: 2px dashed var(--color-blue-light);
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 1rem;
+}
+
+.custom-file-label:hover {
+    background-color: #eee;
+    border-color: #888;
+}
+
+.icon-upload {
+    font-size: 2rem;
+    color: var(--color-blue-light);
+}
+
+#file-label-text {
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--color-blue-light);
+}
+
+.image-preview-container {
+    display: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+.delete-image {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 75%;
+    left: 35%;
+    background-color: var(--color-light-red);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s
+}
+
+#delete-image:hover {
+    background-color: #c82333;
+}
+
+.img-text{
+    display: inline;
+    font-size: 0.95em;
+
+}
+
+.image-add-acount strong{
+    color: var(--color-light-red);
+    margin-right: 5px;
+}
+
+.image-add-acount .img-text-2{
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: var(--color-dark-grey);
+    margin-bottom: 15px;
+}
+
+.image-add-acount .image-1{
+    display: block;
+    width: 100%;
+    height: 130px;
+    background: var(--color-white-blue);
+    border-radius: 12px;
+}
+
+.modal-content-add .input-content-add{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.input-content-add .pesan-error{
+    color: var(--color-light-red);
+    font-size: 0.9em;
+}
+
+.modal-content-add .input-content-add iconify-icon{
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    padding: 8px;
+    font-size: 1.5em;
+    color: var(--color-dark-grey);
+}
+
+.modal-content-add .input-content-add label{
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.modal-content-add .input-content-add label strong{
+    color: var(--color-light-red);
+}
+
+.input-content-add input{
+    width: 100%;
+    outline: none;
+    padding: 0 1.3em;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.input-content-add input::placeholder{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.modal-content-add .button-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+.modal-content-add .button-modal .button-approv{
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background: var(--hover-blue-light);
+    color: var(--color-light);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.modal-content-add .button-modal .button-reject{
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid var(--color-light-red);
+    color: var(--color-light-red);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    background: var(--color-light);
+    border-radius: 8px;
+    margin: 5px 0;
+}

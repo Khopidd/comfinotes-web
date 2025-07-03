@@ -13,6 +13,7 @@
 <body>
 <x-sidebar-user />
 <x-alert />
+<x-modal />
 
     {{ $slot }}
 

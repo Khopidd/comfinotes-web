@@ -1,3 +1,12 @@
+<div class="sidebar-user">
+    <div class="title-side-user">
+        <a href="{{ route('dashboard-user') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo user" class="logo-user"></a>
+    </div>
+    <ul class="menu">
+        <li class="{{ request()->routeIs('dashboard-user') ? 'active-btn' : '' }}"><iconify-icon icon="mage:dashboard-fill"></iconify-icon><a href="{{ route('dashboard-user') }}">Dashboard</a></li>
+    </ul>
+</div>
+
 <div class="main-header">
     <div class="header-menu">
         <div class="header-title">
@@ -52,31 +61,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </div>
-
-    <div class="sidebar-user">
-        <div class="title-side-user">
-            <a href="{{ route('dashboard-user') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo user" class="logo-user"></a>
-        </div>
-        <ul class="menu">
-            <li class="{{ request()->routeIs('dashboard-user') ? 'active-btn' : '' }}"><iconify-icon icon="mage:dashboard-fill"></iconify-icon><a href="{{ route('dashboard-user') }}">Dashboard</a></li>
-        </ul>
-    </div>
-</div>
-
-<!-- Modal content -->
-
-<div class="logout-notification" id="logout-notification" style="display: none;">
-    <div class="logout-content">
-        <h2>Sign Out?</h2>
-        <p>Do you want to exit the app now?</p>
-        <div class="logout-actions">
-            <button class="btn-cancel" data-action="cancel-logout">Cancel</button>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="btn-confirm">Sign Out</button>
-            </form>
         </div>
     </div>
 </div>

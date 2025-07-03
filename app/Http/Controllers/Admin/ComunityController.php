@@ -18,4 +18,12 @@ class ComunityController extends Controller
         $view = path_view('admin.community-admin');
         return view($view, compact('comunity', 'divisi'));
     }
+
+    public function detail($key_id){
+        $divisi = ComunityModel::where('key_id', $key_id)->firstOrFail();
+        $datas = $divisi->comunite;
+        $view = path_view('admin.detail-acount');
+        return view($view, compact('divisi', 'datas'));
+    }
+
 }

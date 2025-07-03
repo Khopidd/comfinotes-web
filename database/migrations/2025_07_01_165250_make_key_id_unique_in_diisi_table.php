@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisi', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_divisi');
-            $table->string('image_divisi')->nullable();
-            $table->string('key_id')->nullable();
-            $table->timestamps();
+        Schema::table('divisi', function (Blueprint $table) {
+            $table->unique('key_id');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisi');
+        Schema::table('divisi', function (Blueprint $table) {
+            //
+        });
     }
 };
