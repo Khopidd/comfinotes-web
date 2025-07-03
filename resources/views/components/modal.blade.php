@@ -48,6 +48,7 @@
                 <input type="file" name="user_image" class="supporting-file" hidden>
                 <label class="custom-file-label">
                     <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
+                    <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
                 </label>
 
                 <div class="image-preview-container">

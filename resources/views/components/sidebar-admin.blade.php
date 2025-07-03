@@ -53,8 +53,8 @@
                         </button>
                         <div class="drop-down" id="userDropdownMenu">
                             <div class="drop-title">
-                                <h2>Hello, Azis</h2>
-                                <p>admin</p>
+                                <h2>Hello, {{ $admin->username }}</h2>
+                                <p>{{ $admin->role }}</p>
                             </div>
                             <hr>
                             <div class="drop-menu">
