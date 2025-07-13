@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\AddFunctModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\helper as Helpers;
 
 use function App\Helpers\path_view;
 
@@ -14,8 +15,9 @@ class MoneyController extends Controller
     public function money(){
         $income = AddFunctModel::all();
         $totalIncome = AddFunctModel::sum('jumlah');
+        $saldo = Helpers::getSaldo();
         $view = path_view('admin.add-money');
-        return view($view, compact('income', 'totalIncome'));
+        return view($view, compact('income', 'totalIncome', 'saldo'));
     }
 
     public function Addfunds(Request $request){
@@ -37,6 +39,8 @@ class MoneyController extends Controller
         $money->tanggal_masuk = $validated['tanggal'];
         $money->keterangan = $validated['keterangan'];
         $money->save();
+
+        Helpers::tambahSaldo($validated['jumlah']);
 
         return redirect()->back()->with('success', 'Dana Berhasil ditambahkan');
     }

@@ -17,7 +17,7 @@
             <div class="card-wallet">
                 <div class="header-wallet">
                     @if ($divisi->image_divisi)
-                    <img src="{{ asset('uploads/' . $divisi->image_divisi) }}" alt="Wallet Background" class="wallet-bg" />
+                        <img src="{{ asset('uploads/' . $divisi->image_divisi) }}" alt="Wallet Background" class="wallet-bg" />
                     @else
                     <img src="{{ asset('asset/image/Profile _ Group_2.png') }}" alt="Wallet Background" class="wallet-bg" />
                     @endif

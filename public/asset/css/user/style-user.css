@@ -324,17 +324,18 @@ body{
 
 .chart-content .chart-items{
     width: 850px;
+    height: fit-content;
     padding: 25px;
-    background: var(--color-light);
-    border-radius: 15px;
+    background-color: var(--color-light);
     border: 2px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 
 .chart-items .chart-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .chart-header h2{
@@ -346,22 +347,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
 .chart-header .chart-button{
     display: flex;
     gap: 15px;
-}
-
-.chart-button .button-report{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: 0.5s ease;
 }
 
 .chart-button .button-dropdown{
@@ -371,18 +362,8 @@ body{
     font-weight: 500;
 }
 
-.chart-button .button-report{
-    background-color: var(--color-blue-light);
-    color: var(--color-light);
-    font-size: 1em;
-}
-
 .chart-button .button-dropdown:hover{
     background-color: var(--color-light-grey);
-}
-
-.chart-button .button-report:hover{
-    background-color: var(--hover-blue-light);
 }
 
 .chart-button .dropdown-content a {
@@ -401,12 +382,9 @@ body{
     display: block;
 }
 
-.chart-main .char-main-title{
-
-}
 
 .chart-main .chart-menu{
-    padding-right: 8em;
+    padding-right: 1em;
     display: flex;
     align-items: center;
     gap: 25px;
@@ -449,7 +427,7 @@ canvas {
 
 .calendar-container {
     width: 370px;
-    height: 360px;
+    height: 375px;
     background: var(--color-light);
     padding: 20px;
     border-radius: 15px;

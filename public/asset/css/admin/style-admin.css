@@ -130,6 +130,7 @@ body{
 
 .chart-content .chart-items{
     width: 850px;
+    height: fit-content;
     padding: 25px;
     background-color: var(--color-light);
     border: 2px solid rgba(0, 0, 0, 0.05);
@@ -169,10 +170,6 @@ body{
 
 .chart-button .button-dropdown:hover{
     background-color: var(--color-light-grey);
-}
-
-.chart-button .button-report:hover{
-    background-color: var(--hover-blue-light);
 }
 
 .chart-button .dropdown-content a {
@@ -221,22 +218,9 @@ body{
 }
 
 
-.graphic {
-    max-width: 100%;
-    margin: 0 auto;
-    background: white;
-    padding: 1rem;
-}
-
-canvas {
-    background: #fff;
-    display: block;
-    border-radius: 12px;
-}
-
 .calendar-container {
     width: 370px;
-    height: 360px;
+    height: 375px;
     background: var(--color-light);
     border: 2px solid rgba(0, 0, 0, 0.05);
     padding: 20px;
@@ -457,6 +441,21 @@ canvas {
 .status p{
     transition: 0.3s;
     font-size: 16px;
+}
+
+.history-empty{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    background: var(--color-light-grey);
+    justify-content: center;
+    align-items: center;
+}
+
+.text-empty{
+    font-size: 1.2em;
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .status p:hover{

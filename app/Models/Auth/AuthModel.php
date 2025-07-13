@@ -25,7 +25,8 @@ class AuthModel extends Authenticatable
 
     public function divisi()
     {
-        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'divisi_id');
+
+        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'divisi_id', );
     }
 
      public function transactions()

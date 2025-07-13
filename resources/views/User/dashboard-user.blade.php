@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="wallet-amount">
-                            <h2>IDR 4.400.000</h2>
+                            <h2>IDR {{ number_format($totalAproval, '0', ',', '.') }}</h2>
                             <span>Pengeluaran Divisi</span>
                         </div>
                     </div>
@@ -94,9 +94,6 @@
                 <div class="chart-header">
                     <h2>Analytics</h2>
                     <div class="chart-button">
-                        <button class="button-report">
-                            <iconify-icon icon="material-symbols:download" class="icon-card-5"></iconify-icon>Download Report
-                        </button>
                         <div class="dropdown-table">
                         <button class="button-dropdown">
                             Today <iconify-icon icon="ep:arrow-down" class="icon-card-5"></span>
@@ -124,7 +121,58 @@
                 </div>
 
                 <div class="graphic">
-                    <canvas id="myChart" width="800" height="300"></canvas>
+                    <div class="y-axis">
+                        <span>20 JT</span>
+                        <span>15 JT</span>
+                        <span>10 JT</span>
+                        <span>5 JT</span>
+                        <span>0</span>
+                    </div>
+
+                    <div class="chart-area">
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Januari</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Februari</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Maret</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">April</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Mei</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Juni</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

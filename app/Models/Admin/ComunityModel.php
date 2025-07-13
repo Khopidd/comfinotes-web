@@ -19,6 +19,6 @@ class ComunityModel extends Model
     ];
 
     public function comunite(){
-        return $this->hasMany(\App\Models\Auth\AuthModel::class, 'divisi_id');
+        return $this->hasMany(\App\Models\Auth\AuthModel::class, 'divisi_id', 'id');
     }
 }

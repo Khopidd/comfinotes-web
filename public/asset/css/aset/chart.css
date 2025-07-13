@@ -12,10 +12,9 @@
   display: flex;
   align-items: flex-end;
   max-width: 100%;
-  height: 300px;
+  height: 210px;
   margin: auto;
   background-color: #fff;
-  padding: 20px;
   gap: 20px;
   position: relative;
 }
@@ -23,9 +22,9 @@
 .y-axis {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-size: 12px;
   color: #666;
 }
@@ -58,7 +57,7 @@
 .bar-income {
   width: 100%;
   background-color: #2563EB;
-  height: 25vh;
+  height: 20vh;
   border-radius: 4px 4px 0 0;
   animation: growIncome 0.5s ease-out forwards;
   transform-origin: bottom;
@@ -67,14 +66,14 @@
 .bar-expense {
   width: 100%;
   background-color: #F64159;
-  height: 15vh;
+  height: 10vh;
   border-radius: 4px 4px 0 0;
   animation: growExpense 0.5s ease-out forwards;
   transform-origin: bottom;
 }
 
 .month-label {
-  font-size: 0.8em;
+    font-size: 0.8em;
     margin-top: 8px;
     color: var(--text-color);
     text-align: center;

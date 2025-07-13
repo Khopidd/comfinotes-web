@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="total-amount">
-                            <h2>IDR {{ number_format($totalIncome, '0', ',', '.') }}</h2>
+                            <h2>IDR {{ number_format($saldo, '0', ',', '.') }}</h2>
                             <span>Saldo komunitas Saat ini</span>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td class="nominal">+ IDR {{ number_format($money->jumlah, '0', ',', '.') }}</td>
-                                        <td>{{ Carbon\Carbon::parse($money->tanggal_transaksi)->translatedFormat('d F Y') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($money->tanggal_masuk)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $money->keterangan }}</td>
                                     </tr>
                                     @endforeach

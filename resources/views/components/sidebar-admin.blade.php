@@ -5,7 +5,7 @@
         <a href="{{ route('dashboard-admin') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo admin" class="logo-admin"></a>
     </div>
     <ul class="menu">
-        <li class="{{ request()->routeIs('dashboard-admin') || request()->routeIs('money.view') ? 'active-btn' : '' }}">
+        <li class="{{ request()->routeIs('dashboard-admin') || request()->routeIs('money.view') || request()->routeIs('admin.profile-admin') ? 'active-btn' : '' }}">
             <iconify-icon icon="mage:dashboard-fill"></iconify-icon><a href="{{ route('dashboard-admin') }}">Dashboard</a>
         </li>
         <li class="{{ request()->routeIs('comunity-admin') ? 'active-btn' : '' }}">
@@ -75,7 +75,7 @@
                                 </div>
                                 <hr>
                                 <div class="drop-menu">
-                                    <a href="#" class="menu-items"><iconify-icon icon="solar:user-linear" class="icon-user-1"></iconify-icon>Profile</a>
+                                    <a href="{{ route('admin.profile-admin') }}" class="menu-items"><iconify-icon icon="solar:user-linear" class="icon-user-1"></iconify-icon>Profile</a>
                                     <hr>
                                     <button type="button" class="menu-items logout-button" data-action="confirm-logout" data-target="logout-notification">
                                         <iconify-icon icon="mdi-light:logout" class="icon-user-2"></iconify-icon>Logout

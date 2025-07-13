@@ -8,7 +8,6 @@ use App\Models\Admin\ComunityModel;
 use App\Models\Auth\AuthModel;
 use App\Models\User\TransactionModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -29,9 +28,9 @@ class ComunityController extends Controller
         $divisi = ComunityModel::where('key_id', $key_id)->firstOrFail();
         $datas = $divisi->comunite;
 
-        $userIds = \App\Models\User::where('divisi_id', $divisi->id)->pluck('id');
+        $userIds = $divisi->comunite->pluck('id');
         $transactions = TransactionModel::with('user.divisi')
-        ->whereIn('user_id', $userIds)
+        ->whereIn('user_id', AuthModel::where('divisi_id', $divisi->id)->pluck('id'))
         ->orderBy('created_at', 'desc')
         ->get();
 

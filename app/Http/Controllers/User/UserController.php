@@ -15,11 +15,15 @@ class UserController extends Controller
 
         $users = Auth::user();
         $divisi = $users->divisi;
+        $totalAproval = TransactionModel::where('status', 'approved')
+        ->where('user_id', Auth::id())
+        ->sum('total_disetujui');
+
         $transactions = TransactionModel::where('user_id', Auth::id())
         ->orderBy('created_at', 'desc')
         ->get();
 
         $view = path_view('User.dashboard-user');
-        return view($view, compact('divisi', 'transactions'));
+        return view($view, compact('divisi', 'transactions', 'totalAproval'));
     }
 }

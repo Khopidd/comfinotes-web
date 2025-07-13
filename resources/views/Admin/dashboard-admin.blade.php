@@ -24,7 +24,7 @@
                         </a>
                     </div>
                     <span>Total Revenue</span>
-                    <h3>IDR {{ number_format($totalIncome, '0', ',', '.') }}</h3>
+                    <h3>IDR {{ number_format($saldo, '0', ',', '.') }}</h3>
                 </div>
                 <div class="card-items">
                     <div class="card-bg-icon">
@@ -39,7 +39,7 @@
                         <iconify-icon icon="hugeicons:money-receive-flow-02" class="icon-card-4"></iconify-icon>
                     </div>
                     <span>Income</span>
-                    <h3>IDR {{ number_format($totalAprovalTransaction, '0', ',', '.') }}</h3>
+                    <h3>IDR {{ number_format($totalIncome, '0', ',', '.') }}</h3>
                 </div>
 
                 <div class="card-items">
@@ -47,7 +47,7 @@
                         <iconify-icon icon="hugeicons:money-send-flow-02" class="icon-card-5"></iconify-icon>
                     </div>
                     <span>Expenses</span>
-                    <h3>IDR {{ number_format($resultTransaction, '0', ',', '.') }}</h3>
+                    <h3>IDR {{ number_format($totalAprovalTransaction, '0', ',', '.') }}</h3>
                 </div>
             </div>
         </div>
@@ -85,11 +85,10 @@
 
                 <div class="graphic">
                     <div class="y-axis">
-                        <span>50 JT</span>
-                        <span>40 JT</span>
-                        <span>30 JT</span>
                         <span>20 JT</span>
+                        <span>15 JT</span>
                         <span>10 JT</span>
+                        <span>5 JT</span>
                         <span>0</span>
                     </div>
 
@@ -186,31 +185,36 @@
                                 <th onclick="sortTable(5)">Status</th>
                             </tr>
                         </thead>
-                        @forelse ( $historyTransaction as $index => $history )
                         <tbody>
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $history->user->divisi->name_divisi }}</td>
-                                <td>{{ number_format($history->total, '0', '.', '.') }}</td>
-                                <td>{{ $history->nama_acara }}</td>
-                                <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
-                                <td class="status">
-                                    @if ($history->status == 'approved')
-                                        <p class="success">Success</p>
-                                    @elseif ($history->status == 'pending')
-                                        <p class="pending">Pending</p>
-                                    @elseif ($history->status == 'rejected')
-                                        <p class="cancel">Cancel</p>
-                                    @endif
-                                </td>
-                            </tr>
+                            @forelse ( $historyTransaction as $index => $history )
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $history->user->divisi->name_divisi }}</td>
+                                    <td>{{ number_format($history->total, 0, '.', '.') }}</td>
+                                    <td>{{ $history->nama_acara }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
+                                    <td class="status">
+                                        @if ($history->status == 'approved')
+                                            <p class="success">Success</p>
+                                        @elseif ($history->status == 'pending')
+                                            <p class="pending">Pending</p>
+                                        @elseif ($history->status == 'rejected')
+                                            <p class="cancel">Cancel</p>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="history-empty">
+                                            <h2 class="text-empty">Tidak ada riwayat Transaksi</h2>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
-                        @empty
-                        <div class="history-empty">
-                            <h2>Tidak ada riwayat Transaksi</h2>
-                        </div>
-                        @endforelse
                     </table>
+
                 </div>
             </div>
         </div>

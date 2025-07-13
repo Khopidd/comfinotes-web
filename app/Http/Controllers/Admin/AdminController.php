@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AddFunctModel;
 use App\Models\Admin\OutFunctModel;
@@ -20,10 +21,9 @@ class AdminController extends Controller
         $totalAprovalTransaction = TransactionModel::where('status', 'approved')->sum('total_disetujui');
         $aprroveCount = TransactionModel::where('status', 'approved')->count();
 
-        $resultTransaction = $totalIncome - ($totalExpenses + $totalAprovalTransaction);
-
+        $saldo = helper::getSaldo();
         $view = path_view('admin.dashboard-admin');
-        return view($view, compact('totalIncome', 'totalExpenses', 'totalAprovalTransaction', 'aprroveCount', 'resultTransaction', 'historyTransaction'));
+        return view($view, compact('totalIncome', 'totalExpenses', 'totalAprovalTransaction', 'aprroveCount', 'historyTransaction', 'saldo'));
     }
 
     public function AddFunds(Request $request){
