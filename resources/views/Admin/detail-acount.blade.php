@@ -39,7 +39,7 @@
             <div class="card-wallet">
                 <div class="content-wallet">
                     @foreach ($datas as $index => $group )
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.delete.group', $group->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
 
@@ -56,7 +56,7 @@
                             <input type="text" name="password" id="password_{{ $index }}" placeholder="Password Tidak Boleh Ditampilkan" disabled>
                         </div>
                         <div class="button-card">
-                            <button type="button" class="button-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">Hapus Akun</button>
+                            <button type="button" class="button-delete" data-action="confirm-delete" data-target="modal-delete" data-url="{{ route('admin.delete.group', $group->id) }}">Hapus Akun</button>
                         </div>
                     </form>
                     @endforeach
@@ -82,46 +82,34 @@
                                 <th onclick="sortTable(5)">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Musyawarah Besar</td>
-                                <td>- IDR 2.000.000</td>
-                                <td>12, Januari 2025</td>
-                                <td>
-                                <button class="btn-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">
-                                    <iconify-icon icon="tabler:trash-filled" class="icon-trash"></iconify-icon>
-                                </button>
-                            </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Makrab</td>
-                                <td>+ IDR 750.000</td>
-                                <td>20, Februari 2025</td>
-                                <td>
-                                <button class="btn-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">
-                                    <iconify-icon icon="tabler:trash-filled" class="icon-card-5"></iconify-icon>
-                                </button>
-                            </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Sewa Barang</td>
-                                <td>- IDR 500.000</td>
-                                <td>15, Maret 2025</td>
-                                <td>
-                                <button class="btn-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">
-                                    <iconify-icon icon="tabler:trash-filled" class="icon-card-5"></iconify-icon>
-                                </button>
-                            </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                @forelse ($transactions as $key => $transaction)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $transaction->nama_acara }}</td>
+                                        <td>- IDR {{ number_format($transaction->total_disetujui, 0, ',', '.') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($transaction->created_at)->format('d F Y') }}</td>
+                                        <td>
+                                            <button class="btn-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">
+                                                <iconify-icon icon="tabler:trash-filled" class="icon-trash"></iconify-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5">
+                                            <div class="no-history">
+                                                <h2 class="text-no">Tidak ada riwayat transaksi</h2>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 </x-admin-layout>

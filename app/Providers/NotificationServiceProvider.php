@@ -3,29 +3,19 @@
 namespace App\Providers;
 
 use App\Models\User\TransactionModel;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
-class AppServiceProvider extends ServiceProvider
+class NotificationServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
-
-
     public function boot(): void
     {
-
-        View::composer('*', function ($view) {
+        View::composer(['admin.dashboard-admin', 'components.sidebar-admin'], function ($view) {
             $notifications = TransactionModel::with('user.divisi')
                 ->where('status', 'pending')
                 ->latest()
-                ->take(7)
                 ->get();
+
             $view->with('notifications', $notifications);
         });
     }

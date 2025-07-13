@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })();
 
-    // === Modal Helper Functions ===
     function openModal(id) {
         document.getElementById(id)?.classList.add('active');
     }

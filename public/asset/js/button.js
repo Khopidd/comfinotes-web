@@ -117,3 +117,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+document.querySelectorAll('[data-action="open-modal"]').forEach(item => {
+    item.addEventListener("click", function () {
+        const modalId = this.dataset.target;
+        const modal = document.getElementById(modalId);
+
+        const id = this.dataset.id;
+        const acara = this.dataset.acara;
+        const jumlah = this.dataset.jumlah;
+        const img = this.dataset.img;
+        const divisi = this.dataset.divisi;
+
+        modal.querySelector('#notif-id').value = id;
+        modal.querySelector('#event').value = acara;
+        modal.querySelector('#amount').value = jumlah;
+        modal.querySelector('#image-preview').src = img;
+        modal.querySelector('.title-modal').textContent = divisi;
+        modal.querySelector('#detail-link').href = `/admin/notifikasi/${id}`;
+
+        modal.classList.add("active");
+    });
+});
+

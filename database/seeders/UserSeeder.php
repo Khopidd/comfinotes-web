@@ -32,23 +32,5 @@ class UserSeeder extends Seeder
             'divisi_id' => null,
             'role' => 'admin',
         ]);
-
-        AuthModel::create([
-            'image' => '',
-            'username' => 'Divisi Eksternal',
-            'email' => 'user01@gmail.com',
-            'password' => Hash::make('password123'),
-            'divisi_id' => 1,
-            'role' => 'user',
-        ]);
-
-        AuthModel::create([
-            'image' => '',
-            'username' => 'Divisi Internal',
-            'email' => 'user02@gmail.com',
-            'password' => Hash::make('password'),
-            'divisi_id' => 2,
-            'role' => 'user',
-        ]);
     }
 }

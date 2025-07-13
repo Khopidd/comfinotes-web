@@ -8,12 +8,12 @@ use Illuminate\View\Component;
 
 class UserLayout extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $PageTitle;
+    public $PageSubtitle;
+    public function __construct(string $PageTitle = "Default Title", string $PageSubtitle = "Default Subtitle")
     {
-        //
+        $this->PageTitle = $PageTitle;
+        $this->PageSubtitle = $PageSubtitle;
     }
 
     /**
@@ -21,6 +21,9 @@ class UserLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.user-layout');
+        return view('components.user-layout', [
+            'PageTitle' => $this->PageTitle,
+            'PageSubtitle' => $this->PageSubtitle
+        ]);
     }
 }

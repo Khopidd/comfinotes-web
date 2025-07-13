@@ -12,13 +12,13 @@
     @endif
 
     @php
-        $addAcountErrors = $errors->hasAny(['username', 'email', 'password']);
+        $addUserErrors = $errors->hasAny(['username', 'email', 'password']);
     @endphp
 
-    @if ($addAcountErrors)
+    @if ($addUserErrors)
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("addAcount")?.classList.add("active");
+                document.getElementById("addUser")?.classList.add("active");
             });
         </script>
     @endif
@@ -47,7 +47,7 @@
                     <div class="card">
                         <div class="card-image-head">
                             @if ($group->image)
-                            <img src="{{ asset('upload/' . $group->image) }}" alt="" class="card-image">
+                            <img src="{{ asset('uploads/' . $group->image) }}" alt="" class="card-image">
                             @else
                              <img src="{{ asset('asset/image/Profile _ Group.png') }}" alt="" class="card-image">
                             @endif
@@ -67,5 +67,6 @@
             </div>
         </div>
     </div>
+
 
 </x-admin-layout>

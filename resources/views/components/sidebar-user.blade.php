@@ -1,3 +1,5 @@
+@props(['PageTitle', 'PageSubtitle'])
+
 <div class="sidebar-user">
     <div class="title-side-user">
         <a href="{{ route('dashboard-user') }}"><img src="{{ asset('asset/image/logo-2.png') }}" alt="logo user" class="logo-user"></a>
@@ -10,8 +12,8 @@
 <div class="main-header">
     <div class="header-menu">
         <div class="header-title">
-            <h1>Dashboard</h1>
-            <p>Informasi terperinci tentang keuangan komunitas Anda</p>
+            <h1>{{ $PageTitle }}</h1>
+            <p>{{ $PageSubtitle }}</p>
         </div>
         <div class="notif-content">
             <div class="notif">
@@ -46,8 +48,8 @@
                         </button>
                         <div class="drop-down" id="userDropdownMenu">
                             <div class="drop-title">
-                                <h2>Hello, Azis</h2>
-                                <p>admin</p>
+                                <h2>Hello, {{ $user->username }}</h2>
+                                <p>{{ $user->role }}</p>
                             </div>
                             <hr>
                             <div class="drop-menu">

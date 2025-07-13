@@ -4,15 +4,16 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class SidebarUSer extends Component
+class notifications extends Component
 {
-    public $user;
+    /**
+     * Create a new component instance.
+     */
     public function __construct()
     {
-        $this->user = Auth::user();
+        //
     }
 
     /**
@@ -20,8 +21,6 @@ class SidebarUSer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.sidebar-user', [
-            'user' => $this->user
-        ]);
+        return view('components.notifications');
     }
 }

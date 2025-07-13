@@ -2,6 +2,9 @@
 
 namespace App\Models\Auth;
 
+use App\Models\Admin\AddFunctModel;
+use App\Models\Admin\OutFunctModel;
+use App\Models\User\TransactionModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class AuthModel extends Authenticatable
@@ -22,7 +25,22 @@ class AuthModel extends Authenticatable
 
     public function divisi()
     {
-        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'id');
+        return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'divisi_id');
+    }
+
+     public function transactions()
+    {
+        return $this->hasMany(TransactionModel::class);
+    }
+
+    public function incomes()
+    {
+        return $this->hasMany(AddFunctModel::class, 'created_by');
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(OutFunctModel::class, 'created_by');
     }
 
     public function scopeAdmin($query)

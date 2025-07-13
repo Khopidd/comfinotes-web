@@ -10,20 +10,25 @@
     <link rel="stylesheet" href="{{ asset('asset/css/aset/color-pallete.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/alert.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/aset/chart.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/aset/add-money.css') }}">
     <link rel="icon" href="{{ asset('asset/image/logo-1.png') }}">
     <title>{{ $title }}</title>
 </head>
 <body>
-<x-sidebar-admin :PageTitle="$PageTitle" :PageSubtitle="$PageSubtitle" />
+<x-sidebar-admin :PageTitle="$PageTitle" :PageSubtitle="$PageSubtitle" :notifications="$notifications" />
 <x-alert />
 <x-modal />
 
     {{ $slot }}
+
+@include('components.notifications', ['notifications' => $notifications])
 
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <script src="{{ asset('asset/js/action.js') }}"></script>
 <script src="{{ asset('asset/js/button.js') }}"></script>
 <script src="{{ asset('asset/js/popup.js') }}"></script>
 <script src="{{ asset('asset/js/alert.js') }}"></script>
+{{-- <script src="{{ asset('asset/js/chart.js') }}"></script> --}}
 </body>
 </html>

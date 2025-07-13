@@ -13,10 +13,13 @@ class AdminLayout extends Component
      */
     public string $PageTitle;
     public string $PageSubtitle;
-    public function __construct(string $PageTitle = "Default Title", string $PageSubtitle = "Default Subtitle")
+    public $notifications;
+
+    public function __construct(string $PageTitle = "Default Title", string $PageSubtitle = "Default Subtitle", $notifications = null)
     {
         $this->PageTitle = $PageTitle;
         $this->PageSubtitle = $PageSubtitle;
+        $this->notifications = $notifications ?? collect();
     }
 
     /**
@@ -26,7 +29,8 @@ class AdminLayout extends Component
     {
         return view('components.admin-layout', [
             'PageTitle' => $this->PageTitle,
-            'PageSubtitle' => $this->PageSubtitle
+            'PageSubtitle' => $this->PageSubtitle,
+            'notifications' => $this->notifications
         ]);
     }
 }

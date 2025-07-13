@@ -212,6 +212,13 @@
     align-items: center;
 }
 
+.image-add-acount span{
+    display: inline;
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: var(--color-dark-grey);
+}
+
 .image-preview,
 .custom-file-label {
     width: 100%;

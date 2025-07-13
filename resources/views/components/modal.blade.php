@@ -40,12 +40,12 @@
 <div class="modal-add" id="addUser">
     <div class="modal-content-add">
         <h2>Tambah Group</h2>
-        <form action="#" method="POST" enctype="multipart/form-data" id="formAddUser">
+        <form action="{{ route('admin.add-group') }}" method="POST" enctype="multipart/form-data" id="formAddUser">
             @csrf
             <input type="hidden" name="source" value="addUser">
             <div class="image-add-acount">
                 <h2 class="img-text">Upload Gambar</h2>
-                <input type="file" name="user_image" class="supporting-file" hidden>
+                <input type="file" name="image" class="supporting-file" hidden>
                 <label class="custom-file-label">
                     <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
                     <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
@@ -61,24 +61,24 @@
 
             <div class="input-content-add">
                 <label for="username-user">Group Name<strong>*</strong></label>
-                <input type="text" name="user_username" id="username-user" placeholder="Masukan Nama">
-                @error('user_username')
+                <input type="text" name="username" id="username-user" placeholder="Masukan Nama">
+                @error('username')
                     <p class="pesan-error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="input-content-add">
-                <label for="email-user">Username<strong>*</strong></label>
-                <input type="text" name="user_email" id="email-user" placeholder="Masukan Email">
-                @error('user_email')
+                <label for="email-user">Email<strong>*</strong></label>
+                <input type="text" name="email" id="email-user" placeholder="Masukan Email">
+                @error('email')
                     <p class="pesan-error">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="input-content-add">
                 <label for="password-user">Password<strong>*</strong></label>
-                <input type="password" name="user_password" id="password-user" placeholder="Masukan Password">
-                @error('user_password')
+                <input type="password" name="password" id="password-user" placeholder="Masukan Password">
+                @error('password')
                     <p class="pesan-error">{{ $message }}</p>
                 @enderror
             </div>

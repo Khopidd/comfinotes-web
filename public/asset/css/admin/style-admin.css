@@ -140,7 +140,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .chart-header h2{
@@ -152,6 +152,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
 .chart-header .chart-button{
@@ -159,28 +160,11 @@ body{
     gap: 15px;
 }
 
-.chart-button .button-report{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: 0.5s ease;
-}
-
 .chart-button .button-dropdown{
     background-color: var(--color-light);
     color: var(--color-dark);
     font-size: 1em;
     font-weight: 500;
-}
-
-.chart-button .button-report{
-    background-color: var(--color-blue-light);
-    color: var(--color-light);
-    font-size: 1em;
 }
 
 .chart-button .button-dropdown:hover{
@@ -207,12 +191,9 @@ body{
     display: block;
 }
 
-.chart-main .char-main-title{
-
-}
 
 .chart-main .chart-menu{
-    padding-right: 8em;
+    padding-right: 1em;
     display: flex;
     align-items: center;
     gap: 25px;
@@ -342,7 +323,7 @@ canvas {
 
 .history-record .history-items{
     width: 1245px;
-    height: 350px;
+    height: fit-content;
     padding: 25px;
     background-color: var(--color-light);
     border: 2px solid rgba(0, 0, 0, 0.05);
@@ -428,7 +409,8 @@ canvas {
 
 .record-table {
     width: 100%;
-    overflow-x: auto;
+    max-height: calc(3 * 75px);
+    overflow-y: auto;
 }
 
 .styled-table {

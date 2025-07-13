@@ -1,5 +1,7 @@
 <x-user-layout>
-<x-slot:title>Dashboard User</x-slot:title>
+<x-slot:title>User Dashboard - Comfinotes</x-slot:title>
+<x-slot:PageTitle>Dashboard</x-slot:PageTitle>
+<x-slot:PageSubtitle>Informasi terperinci tentang keuangan komunitas Anda</x-slot:PageSubtitle>
 
     @if (session('success'))
         <script>
@@ -13,18 +15,22 @@
         <div class="main-menu">
             <div class="card-wallet">
                 <div class="header-wallet">
-                    <div class="wallet-image">
-                        <img src="#" alt="">
-                    </div>
-                    <div class="wallet-head">
-                        <p class="text-wallet">{{ $divisi->name_divisi }}</p>
-                        <div class="card-bg-icon">
-                            <iconify-icon icon="uit:wallet" class="icon-card-2"></iconify-icon>
+                    @if ($divisi->image_divisi)
+                    <img src="{{ asset('uploads/' . $divisi->image_divisi) }}" alt="Wallet Background" class="wallet-bg" />
+                    @else
+                    <img src="{{ asset('assets/image/Profile _ Group.png') }}" alt="Wallet Background" class="wallet-bg" />
+                    @endif
+                    <div class="wallet-content">
+                        <div class="wallet-head">
+                            <p class="text-wallet">{{ $divisi->name_divisi }}</p>
+                            <div class="card-bg-icon">
+                                <iconify-icon icon="uit:wallet" class="icon-card-2"></iconify-icon>
+                            </div>
                         </div>
-                    </div>
-                    <div class="wallet-amount">
-                        <h2>IDR 4.400.000</h2>
-                        <span>Pengeluaran Divisi</span>
+                        <div class="wallet-amount">
+                            <h2>IDR 4.400.000</h2>
+                            <span>Pengeluaran Divisi</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,9 +42,9 @@
                             <p>Informasi terperinci tentang keuangan komunitas Anda</p>
                         </div>
                         <div class="head-button-user">
-                            <button class="add-acount">
-                                pengajuan baru <iconify-icon icon="ic:outline-plus" class="icon-card-5"></span>
-                            </button>
+                            <a href="{{ route('tambah-pengajuan') }}" class="add-acount">
+                                pengajuan baru <iconify-icon icon="ic:outline-plus" class="icon-card-5"></iconify-icon>
+                            </a>
                         </div>
                     </div>
                     <div class="data-table-user">
@@ -53,27 +59,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Musyawarah Besar</td>
-                                    <td>- IDR 2.000.000</td>
-                                    <td>12, Januari 2025</td>
-                                    <td class="status"><p class="success">Success</p></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Makrab</td>
-                                    <td>+ IDR 750.000</td>
-                                    <td>20, Februari 2025</td>
-                                    <td class="status"><p class="pending">pending</p></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sewa Barang</td>
-                                    <td>- IDR 500.000</td>
-                                    <td>15, Maret 2025</td>
-                                    <td class="status"><p class="cancel">cancel</p></td>
-                                </tr>
+                                @forelse($transactions as $index => $item)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $item->nama_acara }}</td>
+                                        <td class="{{ $item->total_disetujui }}">
+                                            {{ $item->total ? 'IDR ' . number_format($item->total, 0, ',', '.') : '-' }}
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::parse($item->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
+                                        <td class="status">
+                                            @if($item->status == 'approved')
+                                                <p class="success">Success</p>
+                                            @elseif($item->status == 'pending')
+                                                <p class="pending">Pending</p>
+                                            @elseif($item->status == 'rejected')
+                                                <p class="cancel">Cancel</p>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5">Belum ada pengajuan.</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

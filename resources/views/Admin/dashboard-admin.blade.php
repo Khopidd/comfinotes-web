@@ -19,19 +19,19 @@
                         <div class="card-bg-icon">
                             <iconify-icon icon="uit:wallet" class="icon-card-2"></iconify-icon>
                         </div>
-                        <a href="#" class="button-plus">
+                        <a href="{{ route('money.view') }}" class="button-plus">
                             <iconify-icon icon="mdi:plus" class="icon-card-3"></iconify-icon>
                         </a>
                     </div>
                     <span>Total Revenue</span>
-                    <h3>IDR25.500.000</h3>
+                    <h3>IDR {{ number_format($totalIncome, '0', ',', '.') }}</h3>
                 </div>
                 <div class="card-items">
                     <div class="card-bg-icon">
                         <iconify-icon icon="iconoir:send-mail" class="icon-card-1"></iconify-icon>
                     </div>
                     <span>Total Submisions</span>
-                    <h3>250</h3>
+                    <h3>{{ $aprroveCount }}</h3>
                 </div>
 
                 <div class="card-items">
@@ -39,7 +39,7 @@
                         <iconify-icon icon="hugeicons:money-receive-flow-02" class="icon-card-4"></iconify-icon>
                     </div>
                     <span>Income</span>
-                    <h3>IDR34.150.000</h3>
+                    <h3>IDR {{ number_format($totalAprovalTransaction, '0', ',', '.') }}</h3>
                 </div>
 
                 <div class="card-items">
@@ -47,7 +47,7 @@
                         <iconify-icon icon="hugeicons:money-send-flow-02" class="icon-card-5"></iconify-icon>
                     </div>
                     <span>Expenses</span>
-                    <h3>IDR8.650.000</h3>
+                    <h3>IDR {{ number_format($resultTransaction, '0', ',', '.') }}</h3>
                 </div>
             </div>
         </div>
@@ -57,9 +57,6 @@
                 <div class="chart-header">
                     <h2>Analytics</h2>
                     <div class="chart-button">
-                        <button class="button-report">
-                            <iconify-icon icon="material-symbols:download" class="icon-card-5"></iconify-icon>Download Report
-                        </button>
                         <div class="dropdown-table">
                         <button class="button-dropdown">
                             Today <iconify-icon icon="ep:arrow-down" class="icon-card-5"></span>
@@ -87,7 +84,59 @@
                 </div>
 
                 <div class="graphic">
-                    <canvas id="myChart" width="800" height="300"></canvas>
+                    <div class="y-axis">
+                        <span>50 JT</span>
+                        <span>40 JT</span>
+                        <span>30 JT</span>
+                        <span>20 JT</span>
+                        <span>10 JT</span>
+                        <span>0</span>
+                    </div>
+
+                    <div class="chart-area">
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Januari</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Februari</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Maret</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">April</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Mei</div>
+                        </div>
+                        <div class="month-bar">
+                            <div class="bar">
+                                <div class="bar-income"></div>
+                                <div class="bar-expense"></div>
+                            </div>
+                            <div class="month-label">Juni</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -131,41 +180,38 @@
                             <tr>
                                 <th onclick="sortTable(0)">No</th>
                                 <th onclick="sortTable(1)">Group</th>
-                                <th onclick="sortTable(2)">Amount</th>
-                                <th onclick="sortTable(3)">Event Name</th>
-                                <th onclick="sortTable(4)">Date</th>
+                                <th onclick="sortTable(2)">Jumlah</th>
+                                <th onclick="sortTable(3)">Nama Acara</th>
+                                <th onclick="sortTable(4)">Tanggal</th>
                                 <th onclick="sortTable(5)">Status</th>
                             </tr>
                         </thead>
+                        @forelse ( $historyTransaction as $index => $history )
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Divisi Logistik</td>
-                                <td>- IDR 2.000.000</td>
-                                <td>Mukbang Besar</td>
-                                <td>12, Januari 2025</td>
-                                <td class="status"><p class="success">Success</p></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Tim Kreatif</td>
-                                <td>+ IDR 750.000</td>
-                                <td>Workshop Digital</td>
-                                <td>20, Februari 2025</td>
-                                <td class="status"><p class="pending">pending</p></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Finance</td>
-                                <td>- IDR 500.000</td>
-                                <td>Meeting Akbar</td>
-                                <td>15, Maret 2025</td>
-                                <td class="status"><p class="cancel">cancel</p></td>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $history->user->divisi->name_divisi }}</td>
+                                <td>{{ number_format($history->total, '0', '.', '.') }}</td>
+                                <td>{{ $history->nama_acara }}</td>
+                                <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
+                                <td class="status">
+                                    @if ($history->status == 'approved')
+                                        <p class="success">Success</p>
+                                    @elseif ($history->status == 'pending')
+                                        <p class="pending">Pending</p>
+                                    @elseif ($history->status == 'rejected')
+                                        <p class="cancel">Cancel</p>
+                                    @endif
+                                </td>
                             </tr>
                         </tbody>
+                        @empty
+                        <div class="history-empty">
+                            <h2>Tidak ada riwayat Transaksi</h2>
+                        </div>
+                        @endforelse
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
