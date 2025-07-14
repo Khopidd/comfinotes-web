@@ -55,11 +55,12 @@
 }
 
 .notif-empty{
-    padding: 20px;
+    height: 100%;
     background: var(--color-light-grey);
     border-radius: 12px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .notif-empty .text-none{
@@ -79,7 +80,7 @@
     border-radius: 12px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
-    height: fit-content;
+    max-height: fit-content;
     padding: 10px;
     z-index: 1000;
 }
@@ -95,10 +96,14 @@
     opacity: 0.2;
 }
 
+.scroll-bar{
+    height: calc(3 * 85px);
+    overflow: auto;
+}
+
 .notif-items {
     display: flex;
     align-items: center;
-    padding: 5px;
     gap: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;

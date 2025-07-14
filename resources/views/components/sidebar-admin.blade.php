@@ -25,8 +25,11 @@
             <div class="notif">
                 <iconify-icon icon="pepicons-pencil:bell" class="bell icon-notif" data-action="toggle-dropdown" data-target="notif-dropdown"></iconify-icon>
                 <div class="notif-dropdown" id="notif-dropdown">
-                    <h2>Notification</h2>
+                    <div class="header-notif">
+                        <h2>Notification</h2>
+                    </div>
                     <hr class="border">
+                    <div class="scroll-bar">
                      @forelse($notifications as $notif)
                         <div class="notif-items"
                             data-action="open-modal"
@@ -57,6 +60,7 @@
                             <p class="text-none">Tidak ada notifikasi.</p>
                         </div>
                     @endforelse
+                    </div>
                 </div>
             </div>
 

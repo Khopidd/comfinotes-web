@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AddFunctModel;
 use App\Models\User\TransactionModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
 
 use function App\Helpers\path_view;
@@ -14,9 +14,11 @@ use function App\Helpers\path_view;
 class TransactionController extends Controller
 {
     public function submission(){
+
         $view = path_view('User.Submission');
         return view($view);
     }
+
     public function AddTransaction(Request $request){
         $request->validate([
         'nama_acara' => 'required|string|min:3',

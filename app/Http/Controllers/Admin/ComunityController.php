@@ -8,6 +8,7 @@ use App\Models\Admin\ComunityModel;
 use App\Models\Auth\AuthModel;
 use App\Models\User\TransactionModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -34,8 +35,11 @@ class ComunityController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
+        $userApprove = TransactionModel::where('status', 'approved')
+        ->whereIn('user_id', AuthModel::where('divisi_id', $divisi->id)->pluck('id'))
+        ->sum('total_disetujui');
         $view = path_view('admin.detail-acount');
-        return view($view, compact('divisi', 'datas', 'transactions'));
+        return view($view, compact('divisi', 'datas', 'transactions', 'userApprove'));
     }
 
     public function AddGroup(Request $request){

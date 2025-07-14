@@ -17,7 +17,7 @@ class TransactionApprovalController extends Controller
     {
         $notifications = TransactionModel::with('user.divisi')
             ->where('status', 'pending')
-            ->latest()
+            ->orderBy('tanggal_pengajuan', 'asc')
             ->get();
 
         $view = path_view('admin.dashboard-admin');
@@ -32,7 +32,7 @@ class TransactionApprovalController extends Controller
             'action'   => 'required|in:approved,rejected',
         ]);
 
-         $transfer = TransactionModel::findOrFail($request->notif_id);
+    $transfer = TransactionModel::findOrFail($request->notif_id);
     $transfer->status = $request->action;
 
     if ($request->action == 'approved') {
@@ -57,7 +57,7 @@ class TransactionApprovalController extends Controller
 
         $transfer->save();
 
-        return redirect()->back()->with('success', 'Pengajuan telah diperbarui.');
+        return redirect()->back()->with('success', 'Status Pengajuan telah diperbarui.');
     }
 
 }

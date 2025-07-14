@@ -27,8 +27,8 @@
                         </div>
                         <div class="notif-box">
                             <div class="notif-text">
-                                <h3 class="title-notif">Divisi Logistik</h3>
-                                <p class="des-notif">waiting for approved notes financial</p>
+                                <h3 class="title-notif">Hasil Pengajuan</h3>
+                                <p class="des-notif">liat untuk detail hasil pengajuan</p>
                             </div>
                             <div class="notif-date">
                                 <iconify-icon icon="tabler:clock" class="history"></iconify-icon>

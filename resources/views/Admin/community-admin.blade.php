@@ -44,18 +44,24 @@
                 @else
                 <div class="main-card">
                     @foreach ( $divisi as $index => $group )
+                    @php
+                        $userApprove = \App\Models\User\TransactionModel::where('status', 'approved')
+                        ->whereIn('user_id', \App\Models\Auth\AuthModel::where('divisi_id', $group->id)->pluck('id'))
+                        ->sum('total_disetujui');
+                    @endphp
+
                     <div class="card">
                         <div class="card-image-head">
-                            @if ($group->image)
-                            <img src="{{ asset('uploads/' . $group->image) }}" alt="" class="card-image">
+                            @if ($group->image_divisi)
+                            <img src="{{ asset('uploads/' . $group->image_divisi) }}" alt="" class="card-image">
                             @else
                              <img src="{{ asset('asset/image/Profile _ Group.png') }}" alt="" class="card-image">
                             @endif
                         </div>
                         <div class="card-text">
-                            <p class="label-card">Dibuat: 27 Januari 2025</p>
+                            <p class="label-card">Di buat : {{ Carbon\Carbon::parse($group->created_at)->translatedFormat('d F Y') }}</p>
                             <h3>{{ $group->name_divisi }}</h3>
-                            <h4>IDR 4.500.000</h4>
+                            <h4>IDR {{ number_format($userApprove, '0', ',', '.') }}</h4>
                         </div>
                         <div class="card-button">
                             <a href="{{ route('admin.detail-user', $group->key_id) }}" class="btn-detail">Lihat Group</a>

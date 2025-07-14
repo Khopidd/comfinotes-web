@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="wallet-amount">
-                            <h2>IDR 4.400.000</h2>
+                            <h2>IDR {{ number_format($userApprove, '0', ',', '.') }}</h2>
                             <span>Pengeluaran Divisi</span>
                         </div>
                     </div>

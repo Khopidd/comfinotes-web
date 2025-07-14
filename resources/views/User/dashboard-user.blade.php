@@ -109,8 +109,8 @@
 
                 <div class="chart-main">
                     <div class="char-main-title">
-                        <span>Total Revenue</span>
-                        <h2>IDR25.500.000</h2>
+                        <span>Total Pengeluaran</span>
+                        <h2>IDR {{ number_format($totalAproval, '0', ',', '.') }}</h2>
                     </div>
                     <div class="chart-list">
                         <ul class="chart-menu">
@@ -122,56 +122,22 @@
 
                 <div class="graphic">
                     <div class="y-axis">
-                        <span>20 JT</span>
-                        <span>15 JT</span>
                         <span>10 JT</span>
+                        <span>8 JT</span>
                         <span>5 JT</span>
+                        <span>3 JT</span>
                         <span>0</span>
                     </div>
 
                     <div class="chart-area">
+                        @foreach($monthlyData as $month => $data)
                         <div class="month-bar">
                             <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
+                                <div class="bar-expense" style="height: {{ $data['expense_percent'] }}px"></div>
                             </div>
-                            <div class="month-label">Januari</div>
+                            <div class="month-label">{{ $month }}</div>
                         </div>
-                        <div class="month-bar">
-                            <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
-                            </div>
-                            <div class="month-label">Februari</div>
-                        </div>
-                        <div class="month-bar">
-                            <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
-                            </div>
-                            <div class="month-label">Maret</div>
-                        </div>
-                        <div class="month-bar">
-                            <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
-                            </div>
-                            <div class="month-label">April</div>
-                        </div>
-                        <div class="month-bar">
-                            <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
-                            </div>
-                            <div class="month-label">Mei</div>
-                        </div>
-                        <div class="month-bar">
-                            <div class="bar">
-                                <div class="bar-income"></div>
-                                <div class="bar-expense"></div>
-                            </div>
-                            <div class="month-label">Juni</div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

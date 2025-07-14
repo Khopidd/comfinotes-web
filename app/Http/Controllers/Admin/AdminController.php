@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\AddFunctModel;
 use App\Models\Admin\OutFunctModel;
 use App\Models\User\TransactionModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function App\Helpers\path_view;
 
@@ -16,14 +18,51 @@ class AdminController extends Controller
 {
     public function admin(){
         $totalIncome = AddFunctModel::sum('jumlah');
-        $totalExpenses = OutFunctModel::sum('jumlah');
         $historyTransaction = TransactionModel::all();
         $totalAprovalTransaction = TransactionModel::where('status', 'approved')->sum('total_disetujui');
         $aprroveCount = TransactionModel::where('status', 'approved')->count();
 
         $saldo = helper::getSaldo();
+
+        $startDate = Carbon::now()->subMonths(5)->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+
+        $incomePerMonth = AddFunctModel::selectRaw('MONTH(tanggal_masuk) as month, SUM(jumlah) as total')
+            ->whereBetween('tanggal_masuk', [$startDate, $endDate])
+            ->groupBy('month')
+            ->pluck('total', 'month');
+
+        $expensePerMonth = TransactionModel::where('status', 'approved')
+            ->whereBetween('created_at', [$startDate, $endDate])
+            ->selectRaw('MONTH(created_at) as month, SUM(total_disetujui) as total')
+            ->groupBy('month')
+            ->pluck('total', 'month');
+
+        $maxValue = max($incomePerMonth->max() ?? 1, $expensePerMonth->max() ?? 1);
+
+        $monthlyData = [];
+        $months = [];
+
+        for ($i = 5; $i >= 0; $i--) {
+            $carbonMonth = Carbon::now()->subMonths($i);
+            $monthNumber = $carbonMonth->month;
+            $monthName = $carbonMonth->locale('id')->monthName;
+
+            $income = $incomePerMonth[$monthNumber] ?? 0;
+            $expense = $expensePerMonth[$monthNumber] ?? 0;
+
+            $monthlyData[$monthName] = [
+                'income' => $income,
+                'expense' => $expense,
+                'income_percent' => ($income / $maxValue) * 100,
+                'expense_percent' => ($expense / $maxValue) * 100,
+            ];
+
+            $months[] = $monthName;
+        }
+
         $view = path_view('admin.dashboard-admin');
-        return view($view, compact('totalIncome', 'totalExpenses', 'totalAprovalTransaction', 'aprroveCount', 'historyTransaction', 'saldo'));
+        return view($view, compact('totalIncome', 'totalAprovalTransaction', 'aprroveCount', 'historyTransaction', 'saldo', 'monthlyData', 'months'));
     }
 
     public function AddFunds(Request $request){
@@ -47,35 +86,6 @@ class AdminController extends Controller
         $money->save();
 
         return redirect()->back()->with('success', 'Dana Berhasil ditambahkan');
-    }
-
-    public function show($id)
-    {
-        $data = TransactionModel::with('user.divisi')->findOrFail($id);
-        return response()->json($data);
-    }
-
-
-    public function showNotifications()
-    {
-        $pendingTransactions = TransactionModel::where('status', 'pending')->latest()->get();
-        return response()->json($pendingTransactions);
-    }
-
-    public function updateStatus(Request $request, $id)
-    {
-        $request->validate(['status' => 'required|in:approved,rejected']);
-
-        $trx = TransactionModel::findOrFail($id);
-        $trx->status = $request->status;
-
-        if ($request->status == 'approved') {
-            $trx->total_disetujui = $trx->total;
-        }
-
-        $trx->save();
-
-        return response()->json(['message' => 'Status updated & notifikasi dikirim ke user']);
     }
 
 }
