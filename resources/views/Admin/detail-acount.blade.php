@@ -95,7 +95,7 @@
                                             @elseif ($transaction->status == "pending")
                                                 <p class="pending">Pending</p>
                                             @elseif ($transaction->status == "rejected")
-                                                <p class="cancel">Reject</p>
+                                                <p class="cancel">Cancel</p>
                                             @endif
                                         </td>
                                     </tr>
