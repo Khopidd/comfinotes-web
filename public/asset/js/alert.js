@@ -1,4 +1,4 @@
-function showAlert(message, type = 'info', duration = 3000) {
+function showAlert(message, type = 'info', duration = 2500) {
   const box = document.getElementById('custom-alert');
   const title = document.getElementById('alert-title');
   const msg = document.getElementById('alert-message');
@@ -26,10 +26,10 @@ function showAlert(message, type = 'info', duration = 3000) {
   box.classList.add('show');
 
   progress.style.transition = 'none';
-  progress.style.transform = 'scaleX(1)';
+  progress.style.transform = 'scaleY(1)';
   void progress.offsetWidth;
   progress.style.transition = `transform ${duration}ms linear`;
-  progress.style.transform = 'scaleX(0)';
+  progress.style.transform = 'scaleY(0)';
 
   setTimeout(() => {
     box.classList.remove('show');

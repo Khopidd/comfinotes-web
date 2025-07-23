@@ -78,42 +78,67 @@ window.addEventListener("click", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const imageUploadBlocks = document.querySelectorAll(".image-add-acount");
+  const imageUploadBlocks = document.querySelectorAll(".image-add-acount");
 
-    imageUploadBlocks.forEach((block, index) => {
-        const fileInput = block.querySelector(".supporting-file");
-        const previewContainer = block.querySelector(".image-preview-container");
-        const imagePreview = block.querySelector(".image-preview");
-        const deleteButton = block.querySelector(".delete-image");
-        const uploadLabel = block.querySelector(".custom-file-label");
+  imageUploadBlocks.forEach((block) => {
+    const fileInput = block.querySelector(".supporting-file");
+    const previewContainer = block.querySelector(".image-preview-container");
+    const imagePreview = block.querySelector(".image-preview");
+    const deleteButton = block.querySelector(".delete-image");
+    const uploadLabel = block.querySelector(".custom-file-label");
 
-        previewContainer.style.display = "none";
-        imagePreview.src = "";
+    previewContainer.style.display = "none";
+    imagePreview.src = "";
 
-        if (fileInput && previewContainer && imagePreview && uploadLabel && deleteButton) {
-            fileInput.addEventListener("change", function () {
-                const file = this.files[0];
-                if (file && file.type.startsWith("image/")) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        imagePreview.src = e.target.result;
-                        previewContainer.style.display = "block";
-                        uploadLabel.style.display = "none";
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
+    if (fileInput && previewContainer && imagePreview && uploadLabel && deleteButton) {
+      fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file && file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            previewContainer.style.display = "block";
+            uploadLabel.style.display = "none";
+          };
+          reader.readAsDataURL(file);
+        }
+      });
 
-            deleteButton.addEventListener("click", function () {
-                fileInput.value = '';
-                imagePreview.src = '';
-                previewContainer.style.display = 'none';
-                uploadLabel.style.display = 'inline-flex';
-            });
+      deleteButton.addEventListener("click", function () {
+        fileInput.value = '';
+        imagePreview.src = '';
+        previewContainer.style.display = 'none';
+        uploadLabel.style.display = 'inline-flex';
+      });
 
-            uploadLabel.addEventListener("click", function () {
-                fileInput.click();
-            });
+      uploadLabel.addEventListener("click", function () {
+        fileInput.click();
+      });
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const textarea = document.getElementById('catatan-detail');
+
+    textarea.addEventListener('focus', function () {
+        if (this.value.trim() === '') {
+            this.value = '- ';
+        }
+    });
+    textarea.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+
+            const start = this.selectionStart;
+            const end = this.selectionEnd;
+            const value = this.value;
+
+            const before = value.substring(0, start);
+            const after = value.substring(end);
+
+            this.value = before + '\n- ' + after;
+            this.selectionStart = this.selectionEnd = start + 3;
         }
     });
 });

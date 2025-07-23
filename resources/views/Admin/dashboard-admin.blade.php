@@ -6,10 +6,19 @@
     @if (session('success'))
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-            showAlert("{{ session('success') }}", "success", 4000);
+                showAlert(@json(session('success')), "success", 4000);
             });
         </script>
     @endif
+
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                showAlert(@json(session('error')), "error", 4000);
+            });
+        </script>
+    @endif
+
 
     <div class="main-content">
         <div class="card-content">
@@ -56,18 +65,18 @@
             <div class="chart-items">
                 <div class="chart-header">
                     <h2>Analytics</h2>
-                    <div class="chart-button">
+                    {{-- <div class="chart-button">
                         <div class="dropdown-table">
-                        <button class="button-dropdown">
+                            <button class="button-dropdown">
                             Today <iconify-icon icon="ep:arrow-down" class="icon-card-5"></span>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#">Today</a>
-                            <a href="#">This Week</a>
-                            <a href="#">This Month</a>
+                            </button>
+                                <div class="dropdown-content">
+                                <a href="#">Today</a>
+                                <a href="#">This Week</a>
+                                <a href="#">This Month</a>
+                                </div>
                         </div>
-                    </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="chart-main">
@@ -129,7 +138,7 @@
                         <h2>All Financial Record</h2>
                         <span>View all event financial history</span>
                     </div>
-                    <div class="dropdown-table">
+                    {{-- <div class="dropdown-table">
                         <button class="button-dropdown">
                             Today <iconify-icon icon="ep:arrow-down" class="icon-card-5"></span>
                         </button>
@@ -138,7 +147,7 @@
                             <a href="#">This Week</a>
                             <a href="#">This Month</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="record-table">
                     <table class="styled-table">
@@ -156,7 +165,7 @@
                             @forelse ( $historyTransaction as $index => $history )
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $history->user->divisi->name_divisi }}</td>
+                                    <td>{!! $history->user?->divisi?->name_divisi ?? '<span style="color: red;">Akun terhapus</span>' !!}</td>
                                     <td>{{ number_format($history->total, 0, '.', '.') }}</td>
                                     <td>{{ $history->nama_acara }}</td>
                                     <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>

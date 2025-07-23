@@ -48,7 +48,6 @@ class TransactionApprovalController extends Controller
         if (Helpers::getSaldo() < $jumlahDisetujui) {
             return redirect()->back()->with('error', 'Saldo tidak mencukupi untuk menyetujui transaksi ini.');
         }
-
             Helpers::kurangiSaldo($jumlahDisetujui);
 
         } else {

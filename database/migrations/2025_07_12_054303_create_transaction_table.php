@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('divisi_id')->nullable()->constrained('divisi');
+            $table->foreignId('divisi_id')->nullable()->constrained('divisi')->onDelete('set null');
             $table->decimal('total', 11, 2)->default(0);
             $table->decimal('total_disetujui', 11, 2)->nullable();
             $table->string('nama_acara');

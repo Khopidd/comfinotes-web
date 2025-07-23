@@ -6,7 +6,15 @@
     @if (session('success'))
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-            showAlert("{{ session('success') }}", "success", 4000);
+                showAlert(@json(session('success')), "success", 4000);
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                showAlert(@json(session('error')), "error", 4000);
             });
         </script>
     @endif

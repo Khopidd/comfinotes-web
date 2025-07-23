@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/style-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/style-comunity.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin/profile-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/style-sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/detail-acount.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/color-pallete.css') }}">

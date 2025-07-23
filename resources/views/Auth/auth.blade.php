@@ -1,20 +1,21 @@
 <x-auth-layout>
     <x-slot:title>Login Page - Comfinote's</x-slot:title>
     @if (session('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            showAlert("{{ session('success') }}", "success", 4000);
-        });
-    </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                showAlert(@json(session('success')), "success", 2500);
+            });
+        </script>
     @endif
 
     @if ($errors->any())
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            showAlert("{{ $errors->first() }}", "error", 4000);
-        });
-    </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                showAlert(@json($errors->first()), "error", 2500);
+            });
+        </script>
     @endif
+
 
     <div class="container">
         <div class="head-content">
@@ -43,7 +44,7 @@
                     <div class="label-form">
                         <div class="input-container-login">
                             <iconify-icon icon="solar:user-linear"></iconify-icon>
-                            <input type="email" name="email" placeholder="Input Username/Email" id="username" required>
+                            <input type="email" name="email" placeholder="Input Email" id="username" required>
                         </div>
                     </div>
                     <div class="label-form">
@@ -55,11 +56,11 @@
                     </div>
 
                     <div class="form-link">
-                        <label class="label">Remember Me
-                            <input type="checkbox" name="remember" {{ old('remember' ? 'checked' : '') }}>
-                            <span class="checkmark"></span>
-                        </label>
-                        <a href="{{ route('forgot') }}" class="forgot">Forgot Password</a>
+                    <label class="label" style="position: relative; padding-left: 26px; cursor: pointer;">
+                        Remember Me
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <span class="checkmark"></span>
+                    </label>
                     </div>
                     <button type="submit" class="btn-submit">Sign In</button>
                 </form>

@@ -7,10 +7,17 @@ use App\Models\Admin\OutFunctModel;
 use App\Models\User\TransactionModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+/**
+ * @property string $username
+ * @property string $role
+ * @property string $password
+ * @property string $divisi_id
+ */
 class AuthModel extends Authenticatable
 {
     protected $table = 'users';
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
         'id',
@@ -18,6 +25,7 @@ class AuthModel extends Authenticatable
         'email',
         'password',
         'image',
+        'role',
         'divisi_id',
         'created_at',
         'updated_at'
@@ -25,7 +33,6 @@ class AuthModel extends Authenticatable
 
     public function divisi()
     {
-
         return $this->belongsTo(\App\Models\Admin\ComunityModel::class, 'divisi_id', );
     }
 
@@ -52,15 +59,5 @@ class AuthModel extends Authenticatable
     public function scopeUser($query)
     {
         return $query->where('role', 'user');
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isUser(): bool
-    {
-        return $this->role === 'user';
     }
 }

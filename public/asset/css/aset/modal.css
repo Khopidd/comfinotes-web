@@ -209,7 +209,6 @@
     position: relative;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .image-add-acount span{
@@ -219,10 +218,9 @@
     color: var(--color-dark-grey);
 }
 
-.image-preview,
 .custom-file-label {
     width: 100%;
-    height: 122px;
+    height: 25vh;
     display: flex;
     object-fit: cover;
     align-items: center;
@@ -233,7 +231,17 @@
     background-color: var(--background-color-1);
     cursor: pointer;
     transition: 0.3s ease;
-    margin-top: 1rem;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: var(--background-color-1);
+    cursor: pointer;
+    transition: 0.5s ease;
+    display: block;
 }
 
 .custom-file-label:hover {
@@ -253,36 +261,60 @@
 }
 
 .image-preview-container {
+    position: relative;
     display: none;
-    margin-top: 15px;
+    width: 100%;
     text-align: center;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 
 .delete-image {
     position: absolute;
-    width: 25px;
-    height: 25px;
-    top: 80%;
-    left: 16%;
-    background-color: var(--color-light-red);
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(246, 65, 89, 0.9); /* warna merah transparan */
     border: none;
     color: white;
-    border-radius: 6px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.2s;
-    display: flex;
+    font-size: 16px;
+    display: none;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+    transition: background-color 0.2s;
 }
 
-#delete-image:hover {
-    background-color: #c82333;
+.image-preview-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+  opacity: 0;
+  transition: 0.3s ease;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.image-preview-container:hover::after {
+  opacity: 1;
+}
+
+.image-preview-container:hover .delete-image {
+  display: flex;
+}
+
+.delete-image:hover {
+  background-color: #c82333;
 }
 
 .img-text{
     display: inline;
+    margin-bottom: 1em;
     font-size: 0.95em;
 
 }

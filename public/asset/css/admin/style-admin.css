@@ -429,15 +429,6 @@ body{
     width: 12%;
 }
 
-.status .success {
-    background-color: var(--color-blue-egg);
-    color: var(--color-light);
-    padding: 8px 0px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 20px;
-}
-
 .status p{
     transition: 0.3s;
     font-size: 16px;
@@ -462,20 +453,27 @@ body{
   transform: scale(1.05);
 }
 
-.status .pending {
-    background-color: var(--color-orange-light);
+.status .cancel,
+.status .pending,
+.status .success {
     color: var(--color-light);
+    width: 100px;
     padding: 10px 0px;
     text-align: center;
+    cursor: pointer;
     border-radius: 20px;
+}
+
+.status .success {
+    background-color: var(--color-blue-egg);
+}
+
+.status .pending {
+    background-color: var(--color-orange-light);
 }
 
 .status .cancel {
     background-color: var(--color-light-red);
-    color: var(--color-light);
-    padding: 10px 0px;
-    text-align: center;
-    border-radius: 20px;
 }
 
 /* ----------------------| End Main Content |------------------------ */

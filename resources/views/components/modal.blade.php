@@ -44,20 +44,21 @@
             @csrf
             <input type="hidden" name="source" value="addUser">
             <div class="image-add-acount">
-                <h2 class="img-text">Upload Gambar</h2>
+                <h2 class="img-text">Upload Gambar<span>Opsional</span></h2>
                 <input type="file" name="image" class="supporting-file" hidden>
                 <label class="custom-file-label">
-                    <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
-                    <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
+                <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
+                <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
                 </label>
 
                 <div class="image-preview-container">
                     <img class="image-preview" src="" alt="Preview">
                     <button type="button" class="delete-image">
-                        <iconify-icon icon="tabler:trash-filled" class="icon-sampah"></iconify-icon>
+                    <iconify-icon icon="tabler:trash-filled" class="icon-sampah"></iconify-icon>
                     </button>
                 </div>
             </div>
+
 
             <div class="input-content-add">
                 <label for="username-user">Group Name<strong>*</strong></label>

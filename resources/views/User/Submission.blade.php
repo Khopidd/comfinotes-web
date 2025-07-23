@@ -38,33 +38,71 @@
                 </div>
 
                 <div class="add-money">
-                    <label for="keterangan">Detail Acara<strong>*</strong></label>
+                    <label for="catatan-detail">Detail Acara<strong>*</strong></label>
                     <span>Sertakan min. 50 karakter untuk detail acara</span>
-                    <input type="text" name="catatan" id="keterangan" placeholder="Tambah Keterangan">
+                    <textarea name="catatan" id="catatan-detail" placeholder="Tambah detail kebutuhan"></textarea>
                     @error('catatan')
                         <p class="pesan-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
             <div class="form-left">
-                <div class="image-add-acount">
-                    <h2 class="img-text">File Pendukung</h2>
+                <div class="bukti-upload-container">
+                    <h2 class="img-text">Bukti Transaksi</h2>
                     <span>Seperti tanda terima, foto rencana acara, dll.</span>
-                    <input type="file" name="supporting_image" class="supporting-file" hidden>
-                    <label class="custom-file-label">
-                        <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
-                        <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
-                    </label>
 
-                    <div class="image-preview-container">
-                        <img class="image-preview" src="" alt="Preview">
-                        <button type="button" class="delete-image">
-                            <iconify-icon icon="tabler:trash-filled" class="icon-sampah"></iconify-icon>
-                        </button>
+                    <div class="bukti-upload">
+                        <!-- Upload 1 -->
+                        <label class="bukti-upload-item">
+                            <iconify-icon icon="icon-park-outline:upload-one" class="bukti-upload-icon"></iconify-icon>
+                            <p>Pilih Gambar 1</p>
+                            <input type="file" name="bukti_transaksi_1" class="bukti-input" data-preview="preview-1">
+                            <div class="bukti-upload-preview-container" id="preview-1-container" style="display:none;">
+                                <img id="preview-1" class="bukti-upload-preview" src="#" alt="Preview">
+                                <button type="button" class="bukti-upload-delete" onclick="hapusGambar('bukti_transaksi_1', 'preview-1')">
+                                    <iconify-icon icon="tabler:trash-filled"></iconify-icon>
+                                </button>
+                            </div>
+                        </label>
+
+                        <div class="bukti-upload-grid">
+                            <label class="bukti-upload-item">
+                                <iconify-icon icon="icon-park-outline:upload-one" class="bukti-upload-icon"></iconify-icon>
+                                <p>Pilih Gambar 2</p>
+                                <input type="file" name="bukti_transaksi_2" class="bukti-input" data-preview="preview-2">
+                                <div class="bukti-upload-preview-container" id="preview-2-container" style="display:none;">
+                                    <img id="preview-2" class="bukti-upload-preview" src="#" alt="Preview">
+                                    <button type="button" class="bukti-upload-delete" onclick="hapusGambar('bukti_transaksi_2', 'preview-2')">
+                                        <iconify-icon icon="tabler:trash-filled"></iconify-icon>
+                                    </button>
+                                </div>
+                            </label>
+
+                            <label class="bukti-upload-item">
+                                <iconify-icon icon="icon-park-outline:upload-one" class="bukti-upload-icon"></iconify-icon>
+                                <p>Pilih Gambar 3</p>
+                                <input type="file" name="bukti_transaksi_3" class="bukti-input" data-preview="preview-3">
+                                <div class="bukti-upload-preview-container" id="preview-3-container" style="display:none;">
+                                    <img id="preview-3" class="bukti-upload-preview" src="#" alt="Preview">
+                                    <button type="button" class="bukti-upload-delete" onclick="hapusGambar('bukti_transaksi_3', 'preview-3')">
+                                        <iconify-icon icon="tabler:trash-filled"></iconify-icon>
+                                    </button>
+                                </div>
+                            </label>
+
+                            <label class="bukti-upload-item">
+                                <iconify-icon icon="icon-park-outline:upload-one" class="bukti-upload-icon"></iconify-icon>
+                                <p>Pilih Gambar 4</p>
+                                <input type="file" name="bukti_transaksi_4" class="bukti-input" data-preview="preview-4">
+                                <div class="bukti-upload-preview-container" id="preview-4-container" style="display:none;">
+                                    <img id="preview-4" class="bukti-upload-preview" src="#" alt="Preview">
+                                    <button type="button" class="bukti-upload-delete" onclick="hapusGambar('bukti_transaksi_4', 'preview-4')">
+                                        <iconify-icon icon="tabler:trash-filled"></iconify-icon>
+                                    </button>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    @error('supporting_image')
-                        <p class="pesan-error">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <div class="add-money">

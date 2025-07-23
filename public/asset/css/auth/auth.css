@@ -134,6 +134,11 @@
     margin-bottom: 20px;
 }
 
+.label-form .pesan-error{
+    color: var(--color-light-red);
+    font-size: 0.9em;
+}
+
 .input-container-login {
     display: flex;
     align-items: center;
@@ -188,13 +193,12 @@
 
 }
 
-.label input {
+.label input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
-  }
+}
 
 .checkmark {
     position: absolute;

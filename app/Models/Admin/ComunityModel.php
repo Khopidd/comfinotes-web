@@ -4,6 +4,11 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $id
+ * @property string $image_divisi
+ */
+
 class ComunityModel extends Model
 {
 

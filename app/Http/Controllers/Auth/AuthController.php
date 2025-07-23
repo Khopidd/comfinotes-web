@@ -1,9 +1,10 @@
 <?php
 
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Auth\AuthModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,23 +15,30 @@ class AuthController extends Controller
         return view('auth.auth');
     }
 
+
     public function signin(Request $request){
         $cridentials = $request->validate([
-            'email' => 'required', 'email',
+            'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
         $remember = $request->filled('remember');
 
-        $user = User::where('email', $cridentials['email'])->first();
+        $Auth = AuthModel::where('email', $cridentials['email'])->first();
 
-        if(!$user){
+        if(!$Auth){
             return back()->withErrors([
                 'email' => 'Email Anda belum terdaftar'
             ])->withInput();
         }
 
-        if (!Hash::check($cridentials['password'],(string) $user->password)) {
+        if($Auth->role == 'user' && is_null($Auth->divisi_id)){
+            return back()->withErrors([
+                'email' => 'Akun Anda sudah tidak Aktif'
+            ]);
+        }
+
+        if (!Hash::check($cridentials['password'], $Auth->password)) {
             return back()->withErrors([
                 'password' => 'Password yang Anda masukan salah!'
             ])->withInput();
@@ -38,9 +46,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($cridentials,  $remember)) {
             $request->session()->regenerate();
-            $role = Auth::user()->role;
+            $role = $Auth->role;
 
-            session()->flash('success', 'Halo ' . Auth::user()->username . ', selamat datang kembali!');
+            session()->flash('success', 'Halo ' . $Auth->username . ', selamat datang kembali!');
 
             return match ($role) {
                 'admin' => redirect()->route('dashboard-admin'),

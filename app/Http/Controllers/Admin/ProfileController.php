@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Auth\AuthModel;
 
 use function App\Helpers\path_view;
 
 class ProfileController extends Controller
 {
     public function profile(){
+        $profileAdmin = AuthModel::where('role', 'admin')->firstOrFail();
         $view = path_view('admin.profile-admin');
-        return view($view);
+        return view($view, compact('profileAdmin'));
     }
 }

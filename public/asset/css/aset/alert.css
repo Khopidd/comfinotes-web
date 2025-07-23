@@ -1,7 +1,7 @@
 .custom-alert {
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 50%;
     width: 350px;
     background: #fff;
     color: #272742;
@@ -9,15 +9,15 @@
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 9999;
-    transform: translateX(120%);
+    transform: translate(-50%, -120%);
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease;
     font-family: sans-serif;
 }
 
 .custom-alert.show {
-    transform: translateX(0);
-    opacity: 1;
+  transform: translate(-50%, 0);
+  opacity: 1;
 }
 
 .custom-alert-content {
@@ -65,12 +65,7 @@
 }
 
 .custom-alert-progress {
-  height: 4px;
-  background: rgba(39, 39, 66, 0.1);
-  margin-top: 12px;
-  transform-origin: left;
-  transform: scaleX(1);
-  transition: transform linear;
+  display: none;
 }
 
 /* --------------------| Responsive |---------------------- */

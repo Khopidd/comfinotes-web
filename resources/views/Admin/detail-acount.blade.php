@@ -79,7 +79,7 @@
                                 <th onclick="sortTable(1)">Nama acara</th>
                                 <th onclick="sortTable(2)">Jumlah</th>
                                 <th onclick="sortTable(3)">Tanggal</th>
-                                <th onclick="sortTable(5)">Aksi</th>
+                                <th onclick="sortTable(5)">Status</th>
                             </tr>
                         </thead>
                             <tbody>
@@ -89,10 +89,14 @@
                                         <td>{{ $transaction->nama_acara }}</td>
                                         <td>- IDR {{ number_format($transaction->total_disetujui, 0, ',', '.') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($transaction->created_at)->format('d F Y') }}</td>
-                                        <td>
-                                            <button class="btn-delete" data-action="confirm-delete" data-target="modal-delete" data-url="#">
-                                                <iconify-icon icon="tabler:trash-filled" class="icon-trash"></iconify-icon>
-                                            </button>
+                                        <td class="status">
+                                            @if ($transaction->status == "approved")
+                                                <p class="success">Success</p>
+                                            @elseif ($transaction->status == "pending")
+                                                <p class="pending">Pending</p>
+                                            @elseif ($transaction->status == "rejected")
+                                                <p class="cancel">Reject</p>
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty
