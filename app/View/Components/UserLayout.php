@@ -10,10 +10,12 @@ class UserLayout extends Component
 {
     public $PageTitle;
     public $PageSubtitle;
+    public $notificationsUser;
     public function __construct(string $PageTitle = "Default Title", string $PageSubtitle = "Default Subtitle")
     {
         $this->PageTitle = $PageTitle;
         $this->PageSubtitle = $PageSubtitle;
+        $this->notificationsUser = $notificationsUser ?? collect();
     }
 
     /**
@@ -23,7 +25,8 @@ class UserLayout extends Component
     {
         return view('components.user-layout', [
             'PageTitle' => $this->PageTitle,
-            'PageSubtitle' => $this->PageSubtitle
+            'PageSubtitle' => $this->PageSubtitle,
+            'notifications' => $this->notificationsUser
         ]);
     }
 }

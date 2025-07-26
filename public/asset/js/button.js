@@ -143,26 +143,65 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 document.querySelectorAll('[data-action="open-modal"]').forEach(item => {
-    item.addEventListener("click", function () {
-        const modalId = this.dataset.target;
-        const modal = document.getElementById(modalId);
+        item.addEventListener("click", function () {
+            const modalId = this.dataset.target;
+            const modal = document.getElementById(modalId);
+            const status = this.dataset.status;
+            const notifId = this.dataset.id;
 
-        const id = this.dataset.id;
-        const acara = this.dataset.acara;
-        const jumlah = this.dataset.jumlah;
-        const img = this.dataset.img;
-        const divisi = this.dataset.divisi;
+            const iconWrapper = modal.querySelector('#status-icon');
+            const title = modal.querySelector('#status-title');
+            const message = modal.querySelector('#status-message');
 
-        modal.querySelector('#notif-id').value = id;
-        modal.querySelector('#event').value = acara;
-        modal.querySelector('#amount').value = jumlah;
-        modal.querySelector('#image-preview').src = img;
-        modal.querySelector('.title-modal').textContent = divisi;
-        modal.querySelector('#detail-link').href = `/admin/notifikasi/${id}`;
+            iconWrapper.innerHTML = '';
+            iconWrapper.className = 'status-icon';
 
-        modal.classList.add("active");
+            let iconHTML = '';
+            let bgColor = '';
+            let msg = '';
+
+            if (status === 'pending') {
+                iconHTML = `<iconify-icon icon="tabler:clock" class="icon-notif"></iconify-icon>`;
+                bgColor = 'bg-orange';
+                msg = 'Pengajuan anda sedang diproses.';
+            } else if (status === 'approved') {
+                iconHTML = `<iconify-icon icon="mdi:check-circle-outline" class="icon-notif"></iconify-icon>`;
+                bgColor = 'bg-green';
+                msg = 'Pengajuan anda disetujui.';
+                markAsRead(notifId);
+            } else if (status === 'rejected') {
+                iconHTML = `<iconify-icon icon="mdi:close-circle-outline" class="icon-notif"></iconify-icon>`;
+                bgColor = 'bg-red';
+                msg = 'Pengajuan anda ditolak.';
+                markAsRead(notifId);
+            }
+
+            iconWrapper.classList.add(bgColor);
+            iconWrapper.innerHTML = iconHTML;
+            message.textContent = msg;
+            title.textContent = 'Status Pengajuan';
+
+            modal.classList.add("active");
+        });
     });
-});
 
+    function markAsRead(id) {
+        let readIds = JSON.parse(localStorage.getItem("readNotifs") || "[]");
+        if (!readIds.includes(id)) {
+            readIds.push(id);
+            localStorage.setItem("readNotifs", JSON.stringify(readIds));
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let readIds = JSON.parse(localStorage.getItem("readNotifs") || "[]");
+        document.querySelectorAll('.notif-items').forEach(item => {
+            const status = item.dataset.status;
+            const id = item.dataset.id;
+
+            if (status !== 'pending' && readIds.includes(id)) {
+                item.style.display = 'none';
+            }
+        });
+    });

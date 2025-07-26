@@ -42,9 +42,12 @@ class TransactionController extends Controller
     $tanggalAkhir = $tanggalAwal->copy()->addDays($request->jumlah_hari - 1);
 
     $imagePath = null;
-    if ($request->hasFile('supporting_image')) {
-        $imagePath = $request->file('supporting_image')->store('supporting_files', 'public');
+        if ($request->hasFile('supporting_image')) {
+        $imageGroup = time().'.'.$request->file('supporting_image')->getClientOriginalExtension();
+        $request->file('supporting_image')->move(public_path('uploads/'), $imageGroup);
+        $imagePath = $imageGroup;
     }
+
 
     TransactionModel::create([
         'user_id'           => Auth::id(),

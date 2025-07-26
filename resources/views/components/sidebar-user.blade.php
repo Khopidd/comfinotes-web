@@ -17,25 +17,34 @@
         </div>
         <div class="notif-content">
             <div class="notif">
-                <iconify-icon icon="pepicons-pencil:bell" class="bell icon-notif" data-action="toggle-dropdown" data-target="notif-dropdown"></iconify-icon>
+                <iconify-icon icon="pepicons-pencil:bell" class="bell icon-notif"
+                    data-action="toggle-dropdown" data-target="notif-dropdown">
+                </iconify-icon>
+
                 <div class="notif-dropdown" id="notif-dropdown">
                     <h2>Notification</h2>
                     <hr class="border">
-                    <div class="notif-items" data-action="open-modal" data-target="modal-notifications">
-                        <div class="bg-icon">
-                            <iconify-icon icon="iconoir:send-mail" class="icon-notif"></iconify-icon>
-                        </div>
-                        <div class="notif-box">
-                            <div class="notif-text">
-                                <h3 class="title-notif">Hasil Pengajuan</h3>
-                                <p class="des-notif">liat untuk detail hasil pengajuan</p>
+                    @foreach ($notifications as $notif)
+                        <div class="notif-items"
+                            data-id="{{ $notif->id }}"
+                            data-status="{{ $notif->status }}"
+                            data-action="open-modal"
+                            data-target="modal-notifications">
+                            <div class="bg-icon">
+                                <iconify-icon icon="iconoir:send-mail" class="icon-notif"></iconify-icon>
                             </div>
-                            <div class="notif-date">
-                                <iconify-icon icon="tabler:clock" class="history"></iconify-icon>
-                                <p>40 Minutes Ago</p>
+                            <div class="notif-box">
+                                <div class="notif-text">
+                                    <h3 class="title-notif">Hasil Pengajuan</h3>
+                                    <p class="des-notif">Klik untuk melihat status pengajuan</p>
+                                </div>
+                                <div class="notif-date">
+                                    <iconify-icon icon="tabler:clock" class="history"></iconify-icon>
+                                    <p>{{ $notif->created_at->diffForHumans() }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                     <hr class="border">
                 </div>
             </div>
@@ -44,7 +53,11 @@
                 <ul class="dropdown-menu">
                     <li class="dropbutton">
                         <button class="dropdown-button" id="userDropdownButton" onclick="toggleDropdown()">
-                            <img src="{{ asset('asset/image/profile-1.jpg') }}" alt="User Logo" class="user-logo">
+                            @if ($user->image)
+                                <img src="{{ asset('uploads/' . $user->image) }}" alt="User Logo" class="user-logo">
+                             @else
+                                <img src="{{ asset('asset/image/profile-1.jpg') }}" alt="User Logo" class="user-logo">
+                            @endif
                         </button>
                         <div class="drop-down" id="userDropdownMenu">
                             <div class="drop-title">
@@ -53,8 +66,6 @@
                             </div>
                             <hr>
                             <div class="drop-menu">
-                                <a href="{{ route('user.profile-user') }}" class="menu-items"><iconify-icon icon="solar:user-linear" class="icon-user-1"></iconify-icon>Profile</a>
-                                <hr>
                                 <button type="button" class="menu-items logout-button" data-action="confirm-logout" data-target="logout-notification">
                                     <iconify-icon icon="mdi-light:logout" class="icon-user-2"></iconify-icon>Logout
                                 </button>
@@ -69,26 +80,14 @@
 
 <div id="modal-notifications" class="modal">
     <div class="modal-content">
+        <h1 class="title-modal" id="status-title">Status</h1>
         <span class="close-button" data-action="close-modal" data-target="modal-notifications">&times;</span>
-        <h1 class="title-modal">Divisi Logistik</h1>
-        <div class="image-aproof">
-            <h2 class="img-text">Supporting Files</h2><strong>*</strong><span>Optional</span>
-            <p class="img-text-2">Such as receipts, photos of event plans, etc.</p>
-            <img src="#" alt="Proof Not Detected" class="image-1">
+        <div class="status-icon-wrapper">
+            <div class="status-icon" id="status-icon"></div>
         </div>
-        <div class="input-content">
-            <label for="event">Event Name<strong>*</strong></label>
-            <input type="text" name="#" id="event" placeholder="Contoh : Musyawarah">
-        </div>
-        <div class="input-content">
-            <label for="amount">Amount<strong>*</strong></label>
-            <input type="text" name="#" id="amount" placeholder="Contoh : 2.450.000">
-        </div>
-        <div class="button-modal">
-            <button type="button" class="button-reject">Cancelled</button>
-            <button type="button" class="button-approv">Approved</button>
-        </div>
-        <a href="#" class="link-info">See Details</a>
+        <p id="status-message" style="text-align: center">Pesan akan muncul di sini</p>
     </div>
 </div>
+
+
 

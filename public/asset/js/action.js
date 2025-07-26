@@ -136,3 +136,31 @@ document.addEventListener("DOMContentLoaded", function () {
     jumlahHariInput.addEventListener("input", updateTanggalAkhir);
     tanggalAwalInput.addEventListener("change", updateTanggalAkhir);
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const inputFile = document.getElementById("profile-image");
+    const previewImg = document.getElementById("profile-preview");
+    const deleteButton = document.getElementById("delete-image");
+    const uploadIcon = document.querySelector(".profile-image iconify-icon");
+
+    inputFile.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = "block";
+                uploadIcon.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    deleteButton.addEventListener("click", function () {
+        inputFile.value = "";
+        previewImg.src = "";
+        previewImg.style.display = "none";
+        uploadIcon.style.display = "block";
+    });
+});

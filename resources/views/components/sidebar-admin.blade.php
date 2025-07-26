@@ -38,7 +38,8 @@
                             data-acara="{{ $notif->nama_acara }}"
                             data-jumlah="{{ number_format($notif->total, 0, ',', '.') }}"
                             data-img="{{ asset('uploads/' . $notif->supporting_image) }}"
-                            data-divisi="{{ $notif->user->divisi->name_divisi }}">
+                            data-divisi="{{ $notif->user->divisi->name_divisi }}"
+                            data-url="{{ route('admin.detail.transaksi', ['key_id' => $notif->user->divisi->key_id]) }}">
 
                             <div class="bg-icon">
                                 <iconify-icon icon="iconoir:send-mail" class="icon-notif"></iconify-icon>
@@ -69,7 +70,11 @@
                     <ul class="dropdown-menu">
                         <li class="dropbutton">
                             <button class="dropdown-button" id="userDropdownButton" onclick="toggleDropdown()">
-                                <img src="{{ asset('asset/image/profile-1.jpg') }}" alt="User Logo" class="user-logo">
+                                @if ($admin->image)
+                                    <img src="{{ asset('uploads/' . $admin->image) }}" alt="User Logo" class="user-logo">
+                                @else
+                                    <img src="{{ asset('asset/image/profile-2.jpg') }}" alt="User Logo" class="user-logo">
+                                @endif
                             </button>
 
                             <div class="drop-down" id="userDropdownMenu">

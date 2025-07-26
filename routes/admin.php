@@ -21,8 +21,10 @@ Route::middleware(['web', 'auth', 'role:admin'])->group(function(){
 
     Route::get('/admin/notif', [TransactionApprovalController::class, 'notifIndex'])->name('admin.notif');
     Route::post('/admin/notif/submit', [TransactionApprovalController::class, 'submit'])->name('notif.submit');
+    Route::get('/admin/transaksi/{key_id}', [TransactionApprovalController::class, 'detailTransaksi'])->name('admin.detail.transaksi');
 
     Route::get('/profile/admin', [ProfileController::class, 'profile'])->name('admin.profile-admin');
+    Route::post('/admin/update/profile', [ComunityController::class, 'updateProfile'])->name('admin.profile.update');
 
 });
 

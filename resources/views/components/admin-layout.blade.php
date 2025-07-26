@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('asset/css/admin/profile-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/style-sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/admin/detail-acount.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/admin/transaction-detail.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/color-pallete.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/alert.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/css/aset/modal.css') }}">

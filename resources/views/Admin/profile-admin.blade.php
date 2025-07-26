@@ -3,6 +3,22 @@
 <x-slot:PageTitle>Profile Admin</x-slot:PageTitle>
 <x-slot:PageSubtitle>Informasi terperinci tentang keuangan komunitas Anda</x-slot:PageSubtitle>
 
+@if (session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            showAlert(@json(session('success')), "success", 4000);
+        });
+    </script>
+@endif
+
+@if (session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            showAlert(@json(session('error')), "error", 4000);
+        });
+    </script>
+@endif
+
 <div class="main-content">
     <div class="profile-header">
         <div class="profile-left">
@@ -30,10 +46,47 @@
                     <h2>Edit Profile</h2>
                 </div>
                 <div class="content-2">
-                    <form action="#">
+                    <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                         <div class="profile-input">
-                            <label for="profile-image">Upload</label>
-                            <input type="file" id="profile-image" hidden>
+                            <h2 class="profile-text">Upload Gambar<span>*</span></h2>
+                            <div class="profile-image-wrapper">
+                                <input type="file" id="profile-image" name="image_profile" hidden>
+                                <label class="profile-image" for="profile-image">
+                                    <img src="#" alt="" id="profile-preview">
+                                    <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
+                                </label>
+                            </div>
+                            <div class="profile-actions">
+                                <label for="profile-image" class="action-button upload">
+                                    <iconify-icon icon="tabler:upload"></iconify-icon>
+                                </label>
+                                <button type="button" class="action-button delete" id="delete-image">
+                                    <iconify-icon icon="tabler:trash-filled"></iconify-icon>
+                                </button>
+                            </div>
+                            @error('image_profile')
+                                <p class="pesan-error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="input-profile-add">
+                            <label for="email-user">Username<strong>*</strong></label>
+                            <input type="text" name="username" id="username" value="{{ $profileAdmin->username }}">
+                            @error('username')
+                                <p class="pesan-error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="input-profile-add">
+                            <label for="password-user">Password<strong>*</strong></label>
+                            <input type="password" name="password" id="password-user" placeholder="Masukan Password baru">
+                            @error('password')
+                                <p class="pesan-error">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="button-upload">
+                            <button type="submit" class="button-save">Simpan Perubahan</button>
                         </div>
                     </form>
                 </div>

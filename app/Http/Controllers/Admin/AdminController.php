@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\helper;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AddFunctModel;
-use App\Models\Admin\OutFunctModel;
 use App\Models\User\TransactionModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 use function App\Helpers\path_view;
 
@@ -80,7 +78,7 @@ class AdminController extends Controller
 
         $money = new AddFunctModel();
         $money->created_by = Auth::id();
-        $money->jumlaj = $validated['jumlah'];
+        $money->jumlah = $validated['jumlah'];
         $money->tanggal_transaksi = $validated['tanggal'];
         $money->keterangan = $validated['keterangan'];
         $money->save();

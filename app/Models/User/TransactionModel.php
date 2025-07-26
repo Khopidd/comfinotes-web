@@ -34,4 +34,5 @@ class TransactionModel extends Model
     public function scopeUnread($query){
         return $query->where('is_read', false)->where('status', 'pending');
     }
+
 }

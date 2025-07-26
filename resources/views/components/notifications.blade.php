@@ -13,21 +13,22 @@
             </div>
 
             <div class="input-content">
-                <label for="event">Event Name<strong>*</strong></label>
-                <input type="text" name="event_name" id="event" placeholder="Contoh : Musyawarah" readonly>
+                <label for="event">Nama Acara<strong>*</strong></label>
+                <input type="text" name="event_name" id="event" placeholder="Contoh : Musyawarah" disabled>
             </div>
 
             <div class="input-content">
-                <label for="amount">Amount<strong>*</strong></label>
-                <input type="text" name="amount" id="amount" placeholder="Contoh : 2.450.000" readonly>
+                <label for="amount">Jumlah<strong>*</strong></label>
+                <input type="text" name="amount" id="amount" placeholder="Contoh : 2.450.000" disabled>
             </div>
 
             <div class="button-modal">
                 <button type="submit" name="action" value="rejected" class="button-reject">Cancelled</button>
                 <button type="submit" name="action" value="approved" class="button-approv">Approved</button>
             </div>
-
-            <a href="#" class="link-info" id="detail-link" target="_blank">See Details</a>
+            <div class="link-detail">
+                <a href="#" class="link-info" id="detail-link">See Details</a>
+            </div>
         </form>
     </div>
 </div>

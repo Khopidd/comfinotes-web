@@ -47,28 +47,24 @@
                 </div>
             </div>
             <div class="form-left">
-                <div class="bukti-upload-container">
-                    <h2 class="img-text">Bukti Transaksi</h2>
+                <div class="image-add-acount">
+                    <h2 class="img-text">File Pendukung</h2>
                     <span>Seperti tanda terima, foto rencana acara, dll.</span>
-                    <div class="image-add-acount">
-                        <h2 class="img-text">File Pendukung</h2>
-                        <span>Seperti tanda terima, foto rencana acara, dll.</span>
-                        <input type="file" name="supporting_image" class="supporting-file" hidden>
-                        <label class="custom-file-label">
-                            <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
-                            <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
-                        </label>
+                    <input type="file" name="supporting_image" class="supporting-file" hidden>
+                    <label class="custom-file-label">
+                        <iconify-icon icon="icon-park-outline:upload-one" class="icon-upload"></iconify-icon>
+                        <p id="file-label-text">Seret dan Jatuhkan di sini, Atau Pilih dari File</p>
+                    </label>
 
-                        <div class="image-preview-container">
-                            <img class="image-preview" src="" alt="Preview">
-                            <button type="button" class="delete-image">
-                                <iconify-icon icon="tabler:trash-filled" class="icon-sampah"></iconify-icon>
-                            </button>
-                        </div>
-                        @error('supporting_image')
-                            <p class="pesan-error">{{ $message }}</p>
-                        @enderror
+                    <div class="image-preview-container">
+                        <img class="image-preview" src="" alt="Preview">
+                        <button type="button" class="delete-image">
+                            <iconify-icon icon="tabler:trash-filled" class="icon-sampah"></iconify-icon>
+                        </button>
                     </div>
+                    @error('supporting_image')
+                        <p class="pesan-error">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="add-money">

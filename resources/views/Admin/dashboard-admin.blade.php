@@ -64,7 +64,7 @@
         <div class="chart-content">
             <div class="chart-items">
                 <div class="chart-header">
-                    <h2>Analytics</h2>
+                    <h2>Analisis</h2>
                     {{-- <div class="chart-button">
                         <div class="dropdown-table">
                             <button class="button-dropdown">
@@ -81,8 +81,8 @@
 
                 <div class="chart-main">
                     <div class="char-main-title">
-                        <span>Total Revenue</span>
-                        <h2>IDR {{ number_format($saldo, '0', ',', '.') }}</h2>
+                        <span>Total Pemasukan</span>
+                        <h2>IDR {{ number_format($totalIncome, '0', ',', '.') }}</h2>
                     </div>
                     <div class="chart-list">
                         <ul class="chart-menu">

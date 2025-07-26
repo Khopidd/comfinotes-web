@@ -93,18 +93,6 @@
             <div class="chart-items">
                 <div class="chart-header">
                     <h2>Analytics</h2>
-                    <div class="chart-button">
-                        <div class="dropdown-table">
-                        <button class="button-dropdown">
-                            Today <iconify-icon icon="ep:arrow-down" class="icon-card-5"></span>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#">Today</a>
-                            <a href="#">This Week</a>
-                            <a href="#">This Month</a>
-                        </div>
-                    </div>
-                    </div>
                 </div>
 
                 <div class="chart-main">

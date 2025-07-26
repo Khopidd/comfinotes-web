@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User\TransactionModel;
 use Illuminate\Http\Request;
 use App\Helpers\helper as Helpers;
+use App\Models\Admin\ComunityModel;
+use App\Models\Auth\AuthModel;
+use Illuminate\Support\Facades\Auth;
 
 use function App\Helpers\path_view;
 
@@ -58,5 +61,36 @@ class TransactionApprovalController extends Controller
 
         return redirect()->back()->with('success', 'Status Pengajuan telah diperbarui.');
     }
+
+    public function detailTransaksi($key_id){
+        $dataTransaction = ComunityModel::where('key_id', $key_id)->first();
+
+        $detailTrasaction = TransactionModel::with('user.divisi')
+        ->whereIn('user_id', AuthModel::where('divisi_id', $dataTransaction->id)->pluck('id'))
+        ->orderBy('created_at', 'desc')->first();
+
+        $view = path_view('admin.detail-transaksi');
+        return view($view, compact('dataTransaction', 'detailTrasaction'));
+    }
+
+
+    public function userDashboard()
+    {
+        $userNotif = Auth::id();
+        $notificationsUser = TransactionModel::where('user_id', $userNotif)
+                        ->whereIn('status', ['approved', 'rejected'])
+                        ->latest()
+                        ->get();
+
+    $notifications = TransactionModel::where('user_id', Auth::id())
+    ->where('is_read', false)
+    ->orderBy('created_at', 'desc')
+    ->get();
+
+
+        $view = Path_view('User.dashboard-user');
+        return view($view, compact('notificationsUser', 'notifications'));
+    }
+
 
 }

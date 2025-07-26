@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+.transaksi-header {
+    display: flex;
+    gap: 2rem;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.transaksi-left,
+.transaksi-right {
+    flex: 1 1 48%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-1 h2,
+.header-2 h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+    color: #333;
+}
+
+.trasaction-title,
+.trasaction-dana,
+.trasaction-catatan,
+.input-form {
+    margin-bottom: 1rem;
+}
+
+.trasaction-title h2,
+.trasaction-dana h2,
+.trasaction-catatan h2,
+.input-form span {
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 1em;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.trasaction-title span,
+.trasaction-dana span,
+.trasaction-catatan span {
+    color: #222;
+}
+
+.supporting-file img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.input-form {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-form label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.input-form input[type="text"],
+.input-form input[type="date"] {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 0.95rem;
+    color: #333;
+    width: 100%;
+}
+
+.input-inline {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.input-inline input {
+    flex: 1;
+}
+
+.input-inline .satuan-input {
+    max-width: 60px;
+    text-align: center;
+    background-color: #eee;
+    cursor: not-allowed;
+}

@@ -29,7 +29,6 @@ class ComunityController extends Controller
         $divisi = ComunityModel::where('key_id', $key_id)->firstOrFail();
         $datas = $divisi->comunite;
 
-        $userIds = $divisi->comunite->pluck('id');
         $transactions = TransactionModel::with('user.divisi')
         ->whereIn('user_id', AuthModel::where('divisi_id', $divisi->id)->pluck('id'))
         ->orderBy('created_at', 'desc')
@@ -83,6 +82,43 @@ class ComunityController extends Controller
 
         return redirect()->back()->with('success', 'Group Berhasil dibuat');
     }
+
+    public function updateProfile(Request $request){
+        $request->validate([
+            'username' => 'required|max:100',
+            'password' => 'nullable|min:8',
+            'image_profile' => 'nullable|mimes:jpeg,png,jpg|image|max:2048'
+        ],[
+            'username.required' => 'Username baru wajib di isi',
+            'username.max' => 'Username maksimal 100 karakter',
+            'password.min' => 'Password minimal 8 karakter',
+            'image_profile.image' => 'File harus berupa gambar',
+            'image_profile.mimes' => 'Format Harus : jpeg, jpg dan png'
+        ]);
+
+        $profile = AuthModel::where('role', 'admin')->first();
+
+        if (!$profile) {
+            return back()->with('error', 'User tidak ditemukan.');
+        }
+
+        $profile->username = $request->username;
+
+        if ($request->filled('password')) {
+            $profile->password = Hash::make($request->password);
+        }
+
+        if ($request->hasFile('image_profile')) {
+            $imageProfile = time().'.'.$request->image_profile->extension();
+            $request->image_profile->move(public_path('uploads/'), $imageProfile);
+            $profile->image = $imageProfile;
+        }
+
+        $profile->save();
+
+        return back()->with('success', 'Profil berhasil diperbarui.');
+    }
+
 
     public function deleteGroup($id){
         $group = AuthModel::find($id);

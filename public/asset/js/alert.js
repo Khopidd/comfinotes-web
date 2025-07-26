@@ -37,20 +37,29 @@ function showAlert(message, type = 'info', duration = 2500) {
 }
 
 
-document.querySelectorAll('[data-action="open-modal"]').forEach(el => {
-    el.addEventListener('click', () => {
-        const id = el.dataset.id;
-        const acara = el.dataset.acara;
-        const jumlah = el.dataset.jumlah;
-        const img = el.dataset.img;
-        const divisi = el.dataset.divisi;
+document.querySelectorAll('[data-action="open-modal"]').forEach(item => {
+    item.addEventListener("click", function () {
+        const modalId = this.dataset.target;
+        const modal = document.getElementById(modalId);
 
-        document.querySelector('.title-modal').textContent = divisi;
-        document.querySelector('#event').value = acara;
-        document.querySelector('#amount').value = jumlah;
-        document.querySelector('.image-1').src = img;
+        const id = this.dataset.id;
+        const acara = this.dataset.acara;
+        const jumlah = this.dataset.jumlah;
+        const img = this.dataset.img;
+        const divisi = this.dataset.divisi;
+        const url = this.dataset.url;
 
-        document.getElementById('modal-notifications').dataset.notifId = id;
-        document.getElementById('modal-notifications').classList.add('active');
+        modal.querySelector('#notif-id').value = id;
+        modal.querySelector('#event').value = acara;
+        modal.querySelector('#amount').value = jumlah;
+        if(img){
+            modal.querySelector('#image-preview').src = img;
+        }
+        else{
+            modal.querySelector('#image-preview').src = 'asset/image/Profile _ Group';
+        }
+        modal.querySelector('.title-modal').textContent = divisi;
+        modal.querySelector('#detail-link').href = url || '#';
+        modal.classList.add("active");
     });
 });
