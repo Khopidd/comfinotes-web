@@ -161,36 +161,37 @@
                                 <th onclick="sortTable(5)">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @forelse ( $historyTransaction as $index => $history )
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{!! $history->user?->divisi?->name_divisi ?? '<span style="color: red;">Akun terhapus</span>' !!}</td>
-                                    <td>{{ number_format($history->total, 0, '.', '.') }}</td>
-                                    <td>{{ $history->nama_acara }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
-                                    <td class="status">
-                                        @if ($history->status == 'approved')
-                                            <p class="success">Success</p>
-                                        @elseif ($history->status == 'pending')
-                                            <p class="pending">Pending</p>
-                                        @elseif ($history->status == 'rejected')
-                                            <p class="cancel">Cancel</p>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6">
-                                        <div class="history-empty">
-                                            <h2 class="text-empty">Tidak ada riwayat Transaksi</h2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
+                        <div class="scroll">
+                            <tbody class="styled-data">
+                                @forelse ( $historyTransaction as $index => $history )
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{!! $history->user?->divisi?->name_divisi ?? '<span style="color: red;">Akun terhapus</span>' !!}</td>
+                                        <td>{{ number_format($history->total, 0, '.', '.') }}</td>
+                                        <td>{{ $history->nama_acara }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($history->tanggal_pengajuan)->translatedFormat('d F Y') }}</td>
+                                        <td class="status">
+                                            @if ($history->status == 'approved')
+                                                <p class="success">Success</p>
+                                            @elseif ($history->status == 'pending')
+                                                <p class="pending">Pending</p>
+                                            @elseif ($history->status == 'rejected')
+                                                <p class="cancel">Cancel</p>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6">
+                                            <div class="history-empty">
+                                                <h2 class="text-empty">Tidak ada riwayat Transaksi</h2>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </div>
                     </table>
-
                 </div>
             </div>
         </div>

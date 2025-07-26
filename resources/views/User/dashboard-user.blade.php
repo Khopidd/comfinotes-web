@@ -102,7 +102,6 @@
                     </div>
                     <div class="chart-list">
                         <ul class="chart-menu">
-                            <li class="list-1">Revenue</li>
                             <li class="list-2">Expenses</li>
                         </ul>
                     </div>

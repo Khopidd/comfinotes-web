@@ -68,6 +68,7 @@
                                 <label for="tanggal_selesai">Tanggal Pengajuan</label>
                                 <input type="date" id="tanggal_selesai" name="tanggal_selesai" value="{{ $detailTrasaction->tanggal_pengajuan ?? '' }}" disabled>
                             </div>
+
                             <div class="button-modal" style="margin-top: 1.5rem;">
                                 <button type="submit" name="action" value="rejected" class="button-reject">Tolak</button>
                                 <button type="submit" name="action" value="approved" class="button-approv">Setujui</button>

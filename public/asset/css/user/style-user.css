@@ -245,6 +245,12 @@ body{
     overflow-x: auto;
 }
 
+.data-table-user {
+    width: 100%;
+    max-height: calc(3 * 75px);
+    overflow-y: auto;
+}
+
 .style-table-user {
     width: 100%;
     border-collapse: collapse;
